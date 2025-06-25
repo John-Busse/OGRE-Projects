@@ -1,0 +1,2 @@
+#define Solar-System_VERSION_MAJOR @Solar-System_VERSION_MAJOR@
+#define Solar-System_VERSION_MINOR @Solar-System_VERSION_MINOR@
