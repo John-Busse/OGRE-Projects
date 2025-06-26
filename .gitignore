@@ -31,5 +31,9 @@
 *.out
 *.app
 
-# Ogre Conversion Log
+# Ogre related includes
 OgreXMLConverter.log
+
+# Eclipse project includes
+*.cproject
+*.project
