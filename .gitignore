@@ -37,3 +37,4 @@ OgreXMLConverter.log
 # Eclipse project includes
 *.cproject
 *.project
+.settings/
