@@ -38,3 +38,6 @@ OgreXMLConverter.log
 *.cproject
 *.project
 .settings/
+
+#CMake build folder
+build/
