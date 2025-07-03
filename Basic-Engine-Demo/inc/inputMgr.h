@@ -31,7 +31,6 @@ class InputMgr: public Mgr, public OgreBites::InputListener{
 
 		void ProcessInput(float deltaTime);
 		void UpdateCamera(float deltaTime);
-		//void WindowResized(Ogre::RenderWindow* window);
 	private:
 		constexpr static float cameraStep = 1000.0f;
 		constexpr static float desiredVelocityStep = 10.0f;
