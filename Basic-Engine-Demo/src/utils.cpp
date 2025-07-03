@@ -13,10 +13,15 @@ float FixAngle(float angle) {
 		return angle - 360;
 	return angle;
 }
+
 float Clamp(float min, float max, float val) {
 	if (val < min)
 		return min;
 	else if (val > max)
 		return max;
 	return val;
+}
+
+bool IsApproxEqual(float a, float b, float epsilon) {
+	return std::abs(a - b) < epsilon;
 }

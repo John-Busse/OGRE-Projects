@@ -21,6 +21,8 @@ void Physics2D::Tick(float dt) {
 		entity->IncrementSpeed(dt);
 	else if (entity->GetDesiredSpeed() < entity->GetSpeed())
 		entity->IncrementSpeed(-dt);
+	if (IsApproxEqual(entity->GetDesiredSpeed(), entity->GetSpeed()))
+		entity->SetSpeed(entity->GetDesiredSpeed()); // Snap to desired speed if close enough
 
 	// Update heading based on desired heading
 	if (entity->GetDesiredHeading() > entity->GetHeading()) {
@@ -34,6 +36,8 @@ void Physics2D::Tick(float dt) {
 		else
 			entity->IncrementHeading(dt);
 	}
+	if (IsApproxEqual(entity->GetDesiredHeading(), entity->GetHeading(), 1.0f))
+		entity->SetHeading(entity->GetDesiredHeading()); // Snap to desired heading if close enough
 
 	// Calculate velocity based on speed and heading
 	Ogre::Vector3 newVelocity = Ogre::Vector3::ZERO;

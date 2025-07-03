@@ -10,12 +10,14 @@
 #include "gameMgr.h"
 #include "gfxMgr.h"
 #include "inputMgr.h"
+#include "uiMgr.h"
 #include "mgr.h"
 
 class EntityMgr; // Forward declaration of the EntityMgr class
 class GameMgr; // Forward declaration of the GameMgr class
 class GfxMgr; // Forward declaration of the GfxMgr class
 class InputMgr; // Forward declaration of the InputMgr class
+class UIMgr; // Forward declaration of the UIMgr class
 
 class Engine {
 	public:
@@ -26,6 +28,7 @@ class Engine {
 		GameMgr* gameMgr;
 		GfxMgr* gfxMgr;
 		InputMgr* inputMgr;
+		UIMgr* uiMgr;
 
 		void Init();
 		void Run();

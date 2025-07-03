@@ -6,6 +6,7 @@
 
 #pragma once
 
+
 class Engine;  // Forward declaration of the Engine class
 
 class Mgr {
@@ -21,6 +22,5 @@ class Mgr {
 		virtual void Tick(float);
 		virtual void Stop();
 };
-
 
 #include "engine.h"

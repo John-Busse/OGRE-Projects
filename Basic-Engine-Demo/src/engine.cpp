@@ -13,6 +13,7 @@ Engine::Engine() {
 	gameMgr = nullptr;
 	gfxMgr = nullptr;
 	inputMgr = nullptr;
+	uiMgr = nullptr;
 	running = true;
 }
 
@@ -24,16 +25,19 @@ void Engine::Init() {
 	gameMgr = new GameMgr(this);
 	gfxMgr = new GfxMgr(this);
 	inputMgr = new InputMgr(this);
+	uiMgr = new UIMgr(this);
 
 	entityMgr->Init();
 	gfxMgr->initApp();	//initApp is a method from OgreBites::ApplicationContext
 	inputMgr->Init();
 	gameMgr->Init();
+	uiMgr->Init();
 
 	entityMgr->LoadLevel();
 	gfxMgr->LoadLevel();
 	inputMgr->LoadLevel();
 	gameMgr->LoadLevel();
+	uiMgr->LoadLevel();
 }
 
 void Engine::TickAll(float delta) {
@@ -41,6 +45,7 @@ void Engine::TickAll(float delta) {
 	inputMgr->Tick(delta);
 	entityMgr->Tick(delta);
 	gameMgr->Tick(delta);
+	uiMgr->Tick(delta);
 }
 
 void Engine::Run() {
@@ -65,4 +70,5 @@ void Engine::Cleanup() {
 	gfxMgr->Stop();
 	entityMgr->Stop();
 	gameMgr->Stop();
+	uiMgr->Stop();
 }

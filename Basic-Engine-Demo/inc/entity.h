@@ -23,6 +23,7 @@ class Entity {
 		void Tick(float dt);
 
 		//getters
+		std::string GetName() const { return name; }
 		//acceleration
 		float GetTurnRate() const { return turnRate; }
 		//minSpeed
@@ -64,10 +65,15 @@ class Entity {
 			desiredSpeed += newSpeed;
 			desiredSpeed = Clamp(minSpeed, maxSpeed, desiredSpeed);
 		}
-
+		void SetHeading(float newHeading) {
+			heading = FixAngle(newHeading);
+		}
 		void IncrementHeading(float direction) {
 			heading += turnRate * direction;
 			heading = FixAngle(heading);
+		}
+		void SetSpeed(float newSpeed) {
+			speed = Clamp(minSpeed, maxSpeed, newSpeed);
 		}
 		void IncrementSpeed(float newSpeed) {
 			speed += acceleration * newSpeed;

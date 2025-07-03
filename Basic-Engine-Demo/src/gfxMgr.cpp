@@ -28,7 +28,15 @@ void GfxMgr::Init() {
 
 void GfxMgr::setup() {
 	//call the base class setup
-	OgreBites::ApplicationContext::setup();
+	mRoot = getRoot();
+	mRoot->initialise(false);
+	createWindow("Basic Game Engine Demo", 1280, 720);
+
+    locateResources();
+    initialiseRTShaderSystem();
+    loadResources();
+
+    mRoot->addFrameListener(this);
 
 	mResourcesCfg = "resources.cfg";
 	mPluginsCfg = "plugins.cfg";
@@ -37,8 +45,9 @@ void GfxMgr::setup() {
 	cf.load(mResourcesCfg);
 
 	//get a pointer to the root and make the scene manager
-	mRoot = getRoot();
+
 	mSceneMgr = mRoot->createSceneManager();
+	mSceneMgr->addRenderQueueListener(mOverlaySystem);
 
 	Ogre::ConfigDialog* cfgDialog = nullptr;
 

@@ -28,6 +28,7 @@
 #include <OgreInput.h>
 #include <OgreApplicationContext.h>
 #include <OgreCameraMan.h>
+#include <OgreTrays.h>
 #include <OgreWindowEventUtilities.h>
 // RTShaderSystem Includes
 #include <OgreRTShaderSystem.h>
