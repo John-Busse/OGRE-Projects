@@ -1,17 +1,17 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
-PROJECT(OGRETest)
+PROJECT(BasicEngine)
 
 # Find packages
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/CMakeModules")
-#SET(OGRE_DIR /snap/ogre/216/lib/OGRE/cmake)	# uncomment if you installed OGRE via snap
+# SET(OGRE_DIR /snap/ogre/216/lib/OGRE/cmake)	# uncomment if you installed OGRE via snap
 FIND_PACKAGE(OGRE REQUIRED COMPONENTS Bites RTShaderSystem)
 
 INCLUDE_DIRECTORIES(${OGRE_INCLUDE_DIRS})
 LINK_DIRECTORIES(${OGRE_LIBRARY_DIRS})
 
 # uncomment if you want to use OGRE's default resources
-#FILE(COPY ${OGRE_CONFIG_DIR}/plugins.cfg ${OGRE_CONFIG_DIR}/resources.cfg
-	#DESTINATION ${CMAKE_BINARY_DIR})
+# FILE(COPY ${OGRE_CONFIG_DIR}/plugins.cfg ${OGRE_CONFIG_DIR}/resources.cfg
+	# DESTINATION ${CMAKE_BINARY_DIR})
 
 FILE(COPY ${PROJECT_SOURCE_DIR}/plugins.cfg ${PROJECT_SOURCE_DIR}/resources.cfg
     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
