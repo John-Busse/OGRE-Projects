@@ -22,5 +22,3 @@ class Mgr {
 		virtual void Tick(float);
 		virtual void Stop();
 };
-
-#include "engine.h"

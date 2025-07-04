@@ -5,7 +5,7 @@
  */
 
 #include "mgr.h"
-
+#include "engine.h"
 
 void Mgr::Init() {
 }

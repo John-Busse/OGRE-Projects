@@ -45,5 +45,6 @@ class UIMgr : public Mgr{
 				"W/S: Move Camera Forward and Backward\n"
 				"Left Shift + W/S: Pitch Camera Up and Down\n"
 				"A/D: Strafe Camera Left and Right\n"
-				"Q/E: Yaw Camera Left and Right";
+				"Q/E: Yaw Camera Left and Right\n"
+				"R/F: Move Camera Up and Down";
 };

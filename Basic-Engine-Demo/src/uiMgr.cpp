@@ -20,6 +20,13 @@ UIMgr::~UIMgr() {
 	trayMgr = nullptr;
 	delete entityInfoTB;
 	entityInfoTB = nullptr;
+	delete engineControlsTB;
+	engineControlsTB = nullptr;
+	delete entityControlsTB;
+	entityControlsTB = nullptr;
+	delete cameraControlsTB;
+	cameraControlsTB = nullptr;
+	engine = nullptr;
 }
 
 void UIMgr::Init() {
@@ -28,6 +35,7 @@ void UIMgr::Init() {
 }
 
 void UIMgr::LoadLevel() {
+	trayMgr->hideCursor();
 	// Load UI elements
 	// engine controls text box
 	engineControlsTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_TOPRIGHT, "EngineControls", "Engine Controls", 350, 110);
@@ -38,7 +46,7 @@ void UIMgr::LoadLevel() {
 	entityControlsTB->setText(entityControls);
 
 	// camera controls text box
-	cameraControlsTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_TOPLEFT, "CameraControls", "Camera Controls", 350, 160);
+	cameraControlsTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_TOPLEFT, "CameraControls", "Camera Controls", 350, 170);
 	cameraControlsTB->setText(cameraControls);
 
 	// entity info text box
