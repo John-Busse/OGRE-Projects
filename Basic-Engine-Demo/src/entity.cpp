@@ -41,7 +41,7 @@ Destroyer::Destroyer(Engine* newEngine, std::string meshfname, Ogre::Vector3 pos
 Carrier::Carrier(Engine* newEngine, std::string meshfname, Ogre::Vector3 pos, int ident): Entity(newEngine, meshfname, pos, ident){
 	maxSpeed = 20.0f;//meters per second...
 	acceleration = 1.0f; // slow
-	
+	turnRate = 0.5f;
 }
 
 Cigarette::Cigarette(Engine* newEngine, std::string meshfname, Ogre::Vector3 pos, int ident): Entity(newEngine, meshfname, pos, ident){
