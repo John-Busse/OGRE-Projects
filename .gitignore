@@ -41,3 +41,6 @@ OgreXMLConverter.log
 
 #CMake build folder
 build/
+
+#VS Code includes
+.vscode/
