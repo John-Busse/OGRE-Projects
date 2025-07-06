@@ -1,8 +1,21 @@
-#include <iostream>
-#include "config.h"
+/*
+ * John Busse itsjohnabusse@gmail.com
+ * OGRE Solar System
+ */
+
+
+#include "main.h"
+#include "engine.h"
 
 int main(int argc, char **argv) {
-	std::cout << "Hello World" << std::endl;
-	std::cout << "Version " << Solar-System_VERSION_MAJOR << "." << Solar-System_VERSION_MINOR << std::endl;
+	try {
+		Engine *engine = new Engine();
+		engine->Init();
+		engine->Run();
+		engine->Cleanup();
+	} catch (const std::exception &e) {
+		std::cerr << "Exception caught: " << e.what() << "\n";
+		return 1;
+	}
 	return 0;
 }
