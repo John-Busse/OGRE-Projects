@@ -23,7 +23,7 @@ GfxMgr::~GfxMgr() {
 }
 
 void GfxMgr::Init() {
-
+	initApp();
 }
 
 void GfxMgr::setup() {

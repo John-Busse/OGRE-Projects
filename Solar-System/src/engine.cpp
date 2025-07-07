@@ -3,22 +3,22 @@
  * OGRE Solar System
  * Engine class definition
 */
-#include "main.h"
 #include "engine.h"
 #include "camMgr.h"
-//#include "entityMgr.h"
-//#include "simMgr.h"
+#include "entityMgr.h"
+#include "simMgr.h"
 #include "gfxMgr.h"
-//#include "inputMgr.h"
-//#include "uiMgr.h"
+#include "inputMgr.h"
+#include "uiMgr.h"
 
 Engine::Engine()
-    : entityMgr(nullptr), 
-    simMgr(nullptr), 
-    gfxMgr(nullptr), 
-    inputMgr(nullptr), 
-    uiMgr(nullptr), 
-    running(true) {
+    : uiMgr(nullptr),
+	  entityMgr(nullptr),
+	  simMgr(nullptr),
+	  gfxMgr(nullptr),
+	  inputMgr(nullptr),
+	  camMgr(nullptr),
+	  running(true) {
     }
 
 Engine::~Engine() {
@@ -26,37 +26,34 @@ Engine::~Engine() {
 
 void Engine::Init() {
     // Initialize managers here
-    entityMgr = new EntityMgr();
-    simMgr = new SimMgr();
-    gfxMgr = new GfxMgr();
-    camMgr = new CamMgr();
-    inputMgr = new InputMgr();
-    uiMgr = new UIMgr();
+    entityMgr = new EntityMgr(this);
+    managers.push_back(entityMgr);
+    simMgr = new SimMgr(this);
+    managers.push_back(simMgr);
+    gfxMgr = new GfxMgr(this);
+    managers.push_back(gfxMgr);
+    camMgr = new CamMgr(this);
+    managers.push_back(camMgr);
+    inputMgr = new InputMgr(this);
+    managers.push_back(inputMgr);
+    uiMgr = new UIMgr(this);
+    managers.push_back(uiMgr);
 
-    entityMgr->Init();
-    simMgr->Init();
-    gfxMgr->Init();
-    camMgr->Init();
-    inputMgr->Init();
-    uiMgr->Init(); 
-
-    // Load resources and set up the engine
-    entityMgr->Load();
-    simMgr->Load();
-    gfxMgr->Load();
-    camMgr->Load();
-    inputMgr->Load();
-    uiMgr->Load();
+    //initialize all managers
+	for (Mgr* manager : managers) {
+		manager->Init();
+	}
+	//load initial data
+	for (Mgr* manager : managers) {
+		manager->Load();
+	}
 }
 
 void Engine::TickAll(float deltaTime) {
     // Call Tick on all managers
-    entityMgr->Tick(deltaTime);
-    simMgr->Tick(deltaTime);
-    gfxMgr->Tick(deltaTime);
-    camMgr->Tick(deltaTime);
-    inputMgr->Tick(deltaTime);
-    uiMgr->Tick(deltaTime);
+	for (Mgr* manager : managers) {
+		manager->Tick(deltaTime);
+	}
 }
 
 void Engine::Run() {
@@ -77,28 +74,11 @@ void Engine::Run() {
 
 void Engine::Cleanup() {
     // Cleanup managers
-    if (entityMgr) {
-        entityMgr->Stop();
-        delete entityMgr;
-    }
-    if (simMgr) {
-        simMgr->Stop();
-        delete simMgr;
-    }
-    if (gfxMgr) {
-        gfxMgr->Stop();
-        delete gfxMgr;
-    }
-    if (camMgr) {
-        camMgr->Stop();
-        delete camMgr;
-    }
-    if (inputMgr) {
-        inputMgr->Stop();
-        delete inputMgr;
-    }
-    if (uiMgr) {
-        uiMgr->Stop();
-        delete uiMgr;
-    }
+	for (Mgr* manager : managers) {
+		if (manager) {
+			manager->Stop();
+			delete manager;
+		}
+	}
+	delete managers;
 }

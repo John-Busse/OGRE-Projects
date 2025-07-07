@@ -36,14 +36,14 @@ bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		case OgreBites::SDLK_ESCAPE:
 			engine->Stop();
 			break;
-		// Space: Pause the simulation
+		// Space: Reset view angle
 		case OgreBites::SDLK_SPACE:
-			// pause the simulation
+			//TODO: reset view angle
 			break;
 		// Left/Right: adjust simulation speed
 		case OgreBites::SDLK_LEFT:
 		case OgreBites::SDLK_RIGHT:
-			//adjustSpeed(evt.keysym.sym == SDLK_RIGHT);
+			//TODO: adjustSpeed(evt.keysym.sym == SDLK_RIGHT);
 			break;
 		// 0-9: Select specific planet
 		case '0':	//sun
@@ -56,7 +56,7 @@ bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		case '7':	//uranus
 		case '8':	//neptune
 		case '9':	//pluto
-			//select planet evt.keysym.sym - '0'
+			engine->entityMgr->SetSelected(evt.keysym.sym - '0');
 			break;
 		//camera controls
 		case 'w':
@@ -74,7 +74,9 @@ bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 }
 
 bool InputMgr::keyReleased(const OgreBites::KeyboardEvent& evt) {
-	keyStates[evt.keysym.sym] = false;
+	if (keyStates.contains(evt.keysym.sym)) {
+		keyStates[evt.keysym.sym] = false;
+	}
 	return true;
 }
 
@@ -88,18 +90,20 @@ bool InputMgr::isKeyDown(int key) {
 }
 
 void InputMgr::ProcessInput(float dt) {
-	/*
+	// W/S: Zoom camera in/out
 	if (isKeyDown('w'))
-		// rotate camera up
+		engine->camMgr->MoveZ(true, engine->entityMgr->GetSelected()->GetPlanet.scale);
 	if (isKeyDown('s'))
-		// rotate camera down
+		engine->camMgr->MoveZ(false, engine->entityMgr->GetSelected()->GetPlanet.scale);
+	// A/D: Rotate camera left/right
 	if (isKeyDown('a'))
-		//zoom camera in
+		engine->camMgr->MoveX(false);
 	if (isKeyDown('d'))
-		//zoom camera out
+		engine->camMgr->MoveX(true);
+	// R/F: Rotate camera up/down
 	if (isKeyDown('r'))
-		//rotate camera up
+		engine->camMgr->MoveY(true);
 	if (isKeyDown('f'))
-		//rotate camera down
-	*/
+		engine->camMgr->MoveY(false);
+
 }

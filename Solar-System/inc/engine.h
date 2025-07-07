@@ -5,6 +5,9 @@
 */
 #pragma once
 
+#include "main.h"
+#include "mgr.h"
+
 // forward declarations
 class CamMgr;
 class EntityMgr;
@@ -35,4 +38,5 @@ class Engine {
     
     private:
         bool running;
+        std::vector<Mgr*> managers;
 };

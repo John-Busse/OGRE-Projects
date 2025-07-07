@@ -6,6 +6,7 @@
 #pragma once
 
 #include "utils.h"
+#include "json.hpp"
 // C++ Library Includes
 #include <iostream>
 #include <map>
@@ -33,3 +34,14 @@
 // RTShaderSystem Includes
 #include <OgreRTShaderSystem.h>
 
+struct PlanetInfo {
+	std::string name, meshName;
+	int numMoons;
+	float scale;
+	//orbit info
+	float orbitDist, orbitSpeed, orbitTilt;
+	//rotation info
+	float rotateSpeed;
+};
+
+using json = nlohmann::json;
