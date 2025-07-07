@@ -9,6 +9,7 @@
 #include "json.hpp"
 // C++ Library Includes
 #include <iostream>
+#include <fstream>
 #include <map>
 #include <sstream>
 #include <string>
@@ -35,7 +36,7 @@
 #include <OgreRTShaderSystem.h>
 
 struct PlanetInfo {
-	std::string name, meshName;
+	std::string name, sceneName;
 	int numMoons;
 	float scale;
 	//orbit info

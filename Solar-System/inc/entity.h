@@ -11,7 +11,7 @@ class Engine;
 
 class Entity {
 	public:
-		Entity(Engine*, std::string, Ogre::Vector3, int);
+		Entity(Engine*, int, PlanetInfo*);	//Ogre::Vector3 pos
 		~Entity() {}
 
 		Engine* engine;
@@ -27,7 +27,6 @@ class Entity {
 	protected:
 		//ogre object info
 		unsigned short int identity;
-		std::string meshfilename;
 		Ogre::SceneNode* sceneNode = nullptr;
 		Ogre::Entity* ogreEntity = nullptr;
 		//dynamic info

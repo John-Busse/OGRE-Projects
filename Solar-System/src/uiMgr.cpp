@@ -51,4 +51,11 @@ void UIMgr::Load() {
 void UIMgr::Tick(float dt) {
 	//update UI elements here
 	PlanetInfo* info = engine->entityMgr->GetSelectedEntity()->GetPlanetInfo();
+	if (info) {
+		std::string entityInfo = "Selected Entity: " + info->name + "\n"
+			+ "Simulation speed: "; //TODO: get simSpeed from SimMgr
+		entityInfoTB->setText(entityInfo);
+	} else {
+		entityInfoTB->setText("Selected Entity: None");
+	}
 }

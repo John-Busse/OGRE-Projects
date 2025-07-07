@@ -20,5 +20,9 @@ class SimMgr : public Mgr {
 		void Tick(float) override;
 		void Stop() override;
 
+		void CreateScene();
+
+		void CreateSkybox();
+		void CreateEntities();
 
 };
