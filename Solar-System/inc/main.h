@@ -12,7 +12,9 @@
 #include <fstream>
 #include <map>
 #include <sstream>
+#include <stack>
 #include <string>
+#include <utility>
 #include <vector>
 // Ogre Includes
 #include <OgreCamera.h>
