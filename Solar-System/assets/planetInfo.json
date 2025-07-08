@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Sun",
+    "numMoons": 9,
+    "scale": 6.9634,
+    "orbitDist": 0,
+    "orbitSpeed": 0,
+    "orbitTilt": 0,
+    "rotateSpeed": 2.7,
+    "sceneName": "Sun.scene"
+  },
+  {
+    "name": "Mercury",
+    "numMoons": 0,
+    "scale": 0.02439,
+    "orbitDist": 570,
+    "orbitSpeed": 4.15,
+    "orbitTilt": 3.38,
+    "rotateSpeed": 8,
+    "sceneName": "Mercury.scene"
+  },
+  {
+    "name": "Venus",
+    "numMoons": 0,
+    "scale": 0.06051,
+    "orbitDist": 1080,
+    "orbitSpeed": 1.62,
+    "orbitTilt": 3.86,
+    "rotateSpeed": 5,
+    "sceneName": "Venus.scene"
+  },
+  {
+    "name": "Earth",
+    "numMoons": 1,
+    "scale": 0.06378,
+    "orbitDist": 1490,
+    "orbitSpeed": 1,
+    "orbitTilt": 7.25,
+    "rotateSpeed": 1,
+    "sceneName": "Earth.scene"
+  },
+  {
+    "name": "Luna",
+    "numMoons": 0,
+    "scale": 0.01737,
+    "orbitDist": 3.844,
+    "orbitSpeed": 0.075,
+    "orbitTilt": 5.145,
+    "rotateSpeed": 0.075,
+    "sceneName": "Moon.scene"
+  },
+  {
+    "name": "Mars",
+    "numMoons": 0,
+    "scale": 0.03389,
+    "orbitDist": 2280,
+    "orbitSpeed": 0.53,
+    "orbitTilt": 5.65,
+    "rotateSpeed": 1.025,
+    "sceneName": "Mars.scene"
+  },
+  {
+    "name": "Jupiter",
+    "numMoons": 0,
+    "scale": 0.69911,
+    "orbitDist": 7800,
+    "orbitSpeed": 0.084,
+    "orbitTilt": 6.09,
+    "rotateSpeed": 0.4125,
+    "sceneName": "Jupiter.scene"
+  },
+  {
+    "name": "Saturn",
+    "numMoons": 0,
+    "scale": 0.58232,
+    "orbitDist": 14370,
+    "orbitSpeed": 0.034,
+    "orbitTilt": 5.51,
+    "rotateSpeed": 0.43,
+    "sceneName": "Saturn.scene"
+  },
+  {
+    "name": "Uranus",
+    "numMoons": 0,
+    "scale": 0.25362,
+    "orbitDist": 28710,
+    "orbitSpeed": 0.012,
+    "orbitTilt": 6.48,
+    "rotateSpeed": 0.71805,
+    "sceneName": "Uranus.scene"
+  },
+  {
+    "name": "Neptune",
+    "numMoons": 0,
+    "scale": 0.24622,
+    "orbitDist": 45300,
+    "orbitSpeed": 0.06,
+    "orbitTilt": 6.43,
+    "rotateSpeed": 0.667,
+    "sceneName": "Neptune.scene"
+  },
+  {
+    "name": "Pluto",
+    "numMoons": 0,
+    "scale": 0.01188,
+    "orbitDist": 59060,
+    "orbitSpeed": 0.004,
+    "orbitTilt": 11.88,
+    "rotateSpeed": 6.375,
+    "sceneName": "Pluto.scene"
+  }
+]
