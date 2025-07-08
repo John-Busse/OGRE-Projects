@@ -36,9 +36,9 @@ void EntityMgr::Tick(float dt) {
 	}
 }
 
-void EntityMgr::CreateEntity(std::string type, Ogre::Vector3 pos, PlanetInfo planetInfo) {
+void EntityMgr::CreateEntity(Ogre::Vector3 pos, PlanetInfo *planetInfo) {
 	Entity* entPtr;
-	entPtr = new Entity(this->engine, type, pos, count);
+	entPtr = new Entity(this->engine, count, planetInfo, pos);
 	count++;
 	entities.push_back(entPtr);
 }
@@ -53,4 +53,8 @@ void EntityMgr::SelectNextEntity() {
 	selectedEntity = entities[selectedIndex];
 	selectedEntity->SetSelected(true);
 	}
+}
+
+Entity* EntityMgr::GetEntityByIndex(int index) {
+	return entities[index];
 }
