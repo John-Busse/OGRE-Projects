@@ -8,6 +8,7 @@
 #include "engine.h"
 
 // default implementations for Mgr methods
+/*
 void Mgr::Init() {
 }
 
@@ -20,3 +21,4 @@ void Tick(float deltaTime) {
 void Mgr::Stop() {
 
 }
+*/
