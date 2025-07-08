@@ -8,6 +8,7 @@
 #include "main.h"
 #include "mgr.h"
 
+//forward declaration
 class Engine;
 
 class SimMgr : public Mgr {
@@ -25,4 +26,8 @@ class SimMgr : public Mgr {
 		void CreateSkybox();
 		void CreateEntities();
 
+		void SetPos(int, float);
+	private:
+		int stackIndex;
+		std::stack<Ogre::Vector3> posStack;
 };
