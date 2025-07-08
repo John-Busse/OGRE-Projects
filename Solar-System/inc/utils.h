@@ -3,10 +3,19 @@
  * OGRE Solar System
  * Utilities declaration
 */
-
 #pragma once
 
 #include <cmath>
 
 float FixAngle(float angle);
-float Clamp(float min, float max, float val);
+
+template <typename T> T Clamp(T min, T max, T val) {
+	if (val < min)
+		return min;
+	else if (val > max)
+		return max;
+	return val;
+}
+
+//template class <int>;
+//template class <float>;

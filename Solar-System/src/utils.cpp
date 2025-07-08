@@ -14,10 +14,12 @@ float FixAngle(float angle) {
 	return angle;
 }
 
-float Clamp(float min, float max, float val) {
+/*
+template <typename T> T Clamp(T min, T max, T val) {
 	if (val < min)
 		return min;
 	else if (val > max)
 		return max;
 	return val;
 }
+*/
