@@ -5,6 +5,7 @@
 */
 #include "camMgr.h"
 #include "engine.h"
+#include "entity.h"
 
 CamMgr::CamMgr(Engine *engine)
 	: Mgr(engine) {
@@ -15,6 +16,7 @@ CamMgr::CamMgr(Engine *engine)
 	phi = 90.0f;
 	camPos = Ogre::Vector3(0.0f, 0.0f, -50.0f);
 	focusPos = Ogre::Vector3(0.0f, 0.0f, 0.0f);
+	updateCam = true;
 }
 
 CamMgr::~CamMgr() {
@@ -46,6 +48,28 @@ void CamMgr::Tick(float dt) {
 	//TODO: get current selected entity
 	//focus pos = entity position
 	//SetPos()
+	/*
+	if (thisPlanet->GetSelected()){
+		engine->camMgr->SetPos(posStack.top());
+		if (engine->camMgr->GetUpdateCam()) {
+			engine->camMgr->SetRadius(thisPlanet->GetPlanet()->scale);
+			engine->camMgr->ResetAngle(posStack.top());
+			engine->camMgr->SetUpdateCam(false);
+		}
+	}
+	*/
+	if (updateCam) {
+		Entity* selected = engine->entityMgr->GetSelected();
+		SetPos(selected->GetPosition());
+		if (updateCam) {
+			SetRadius(selected->GetPlanet()->scale);
+			ResetAngle();
+			updateCam = false;
+		}
+	}
+
+	cameraNode->setPosition(camPos);
+	cameraNode->lookAt(focusPos,Ogre::Node::TS_WORLD);
 }
 
 void CamMgr::Stop() {
@@ -63,6 +87,7 @@ void CamMgr::ResetAngle() {
 		theta = atan2(view.z, view.x) * (180.0f / M_PI);
 		phi = (acos(view.y / 1.0f) * (180.0f / M_PI)) - 30.0f;
 	}
+
 }
 
 void CamMgr::SetRadius(float planetScale) {
@@ -80,28 +105,30 @@ void CamMgr::SetPos(Ogre::Vector3 pos) {
 							pos.y + radius * cos(phi.valueRadians()),
 							pos.z + radius * sin(phi.valueRadians()) * sin(theta.valueRadians()));
 	focusPos = pos;
+
+
 }
 
 //rotate camera left or right (x-axis) with A and D keys
-void CamMgr::MoveX(bool right){
-	float direction = 1.0f * (right ? 1.0f : -1.0f);
-	theta += direction;
+void CamMgr::MoveX(bool right, float delta){
+	float direction = 1.0f * delta * (right ? 1.0f : -1.0f);
+	theta += Ogre::Degree(direction);
 
-	theta = Clamp(0.0f, 360.0f, theta.mDeg);
+	theta = Clamp <float> (0.0f, 360.0f, theta.valueDegrees());
 }
 
 //rotate camera up or down (y-axis) with R and F keys
-void CamMgr::MoveY(bool up) {
-	float direction = 0.5f * (up ? 1.0f : -1.0f);
-	phi += direction;
+void CamMgr::MoveY(bool up, float delta) {
+	float direction = 0.5f * delta * (up ? 1.0f : -1.0f);
+	phi += Ogre::Degree(direction);
 
-	phi = Clamp(1.0f, 180.0f, phi.mDeg);
+	phi = Clamp <float> (1.0f, 180.0f, phi.valueDegrees());
 }
 
 //zoom camera in or out (z-axis) with W and S keys
-void CamMgr::MoveZ(bool in, float scale) {
-	float direction = 0.1f * (in ? 1.0f : -1.0f) * scale;
+void CamMgr::MoveZ(bool in, float scale, float delta) {
+	float direction = 0.5f * delta * (in ? 1.0f : -1.0f) * scale;
 	radius += direction;
 
-	radius = FixAngle(radius.mDeg);
+	radius = FixAngle(radius);
 }

@@ -23,14 +23,19 @@ class CamMgr : public Mgr {
 		void SetPos(Ogre::Vector3 pos);
 		void SetRadius(float planetScale);
 
-		void MoveX(bool right);
-		void MoveY(bool up);
-		void MoveZ(bool in, float scale);
+		void MoveX(bool right, float delta);
+		void MoveY(bool up, float delta);
+		void MoveZ(bool in, float scale, float delta);
+
+		bool GetUpdateCam() { return updateCam; }
+		void SetUpdateCam(bool val) { updateCam = val; }
 	private:
 		Ogre::SceneNode* cameraNode;
 
 		Ogre::Vector3 camPos;
 		Ogre::Vector3 focusPos;
 
-		Ogre::Degree radius, theta, phi;
+		float radius;
+		Ogre::Degree theta, phi;
+		bool updateCam;
 };
