@@ -66,6 +66,10 @@ void GfxMgr::Tick(float deltaTime) {
 	}
 }
 
+void GfxMgr::Stop() {
+
+}
+
 bool GfxMgr::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	// Handle frame rendering events
 	if (getRenderWindow()->isClosed()) {

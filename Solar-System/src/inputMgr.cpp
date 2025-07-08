@@ -7,6 +7,7 @@
 #include "inputMgr.h"
 #include "engine.h"
 #include "gfxMgr.h"
+#include "entity.h"
 //#include "entityMgr.h"
 
 InputMgr::InputMgr(Engine *engine)
@@ -29,6 +30,10 @@ void InputMgr::Tick(float dt) {
 	ProcessInput(dt);
 }
 
+void InputMgr::Stop() {
+
+}
+
 // input press events
 bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 	switch (evt.keysym.sym) {
@@ -43,7 +48,7 @@ bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		// Left/Right: adjust simulation speed
 		case OgreBites::SDLK_LEFT:
 		case OgreBites::SDLK_RIGHT:
-			//TODO: adjustSpeed(evt.keysym.sym == SDLK_RIGHT);
+			engine->SetSpeed(evt.keysym.sym == OgreBites::SDLK_RIGHT);
 			break;
 		// 0-9: Select specific planet
 		case '0':	//sun
@@ -56,7 +61,8 @@ bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		case '7':	//uranus
 		case '8':	//neptune
 		case '9':	//pluto
-			engine->entityMgr->SetSelected(evt.keysym.sym - '0');
+			if(engine->entityMgr->SetSelected(evt.keysym.sym - '0'))	//if this is a new planet
+				engine->camMgr->SetUpdateCam(true);
 			break;
 		//camera controls
 		case 'w':
@@ -92,18 +98,18 @@ bool InputMgr::isKeyDown(int key) {
 void InputMgr::ProcessInput(float dt) {
 	// W/S: Zoom camera in/out
 	if (isKeyDown('w'))
-		engine->camMgr->MoveZ(true, engine->entityMgr->GetSelected()->GetPlanet.scale);
+		engine->camMgr->MoveZ(true, engine->entityMgr->GetSelected()->GetPlanet()->scale, dt);
 	if (isKeyDown('s'))
-		engine->camMgr->MoveZ(false, engine->entityMgr->GetSelected()->GetPlanet.scale);
+		engine->camMgr->MoveZ(false, engine->entityMgr->GetSelected()->GetPlanet()->scale, dt);
 	// A/D: Rotate camera left/right
 	if (isKeyDown('a'))
-		engine->camMgr->MoveX(false);
+		engine->camMgr->MoveX(false, dt);
 	if (isKeyDown('d'))
-		engine->camMgr->MoveX(true);
+		engine->camMgr->MoveX(true, dt);
 	// R/F: Rotate camera up/down
 	if (isKeyDown('r'))
-		engine->camMgr->MoveY(true);
+		engine->camMgr->MoveY(true, dt);
 	if (isKeyDown('f'))
-		engine->camMgr->MoveY(false);
+		engine->camMgr->MoveY(false, dt);
 
 }

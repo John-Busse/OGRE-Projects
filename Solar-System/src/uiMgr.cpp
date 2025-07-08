@@ -5,6 +5,7 @@
 */
 #include "uiMgr.h"
 #include "engine.h"
+#include "entity.h"
 
 UIMgr::UIMgr(Engine* engine) :
 	Mgr(engine),
@@ -50,7 +51,7 @@ void UIMgr::Load() {
 
 void UIMgr::Tick(float dt) {
 	//update UI elements here
-	PlanetInfo* info = engine->entityMgr->GetSelectedEntity()->GetPlanetInfo();
+	PlanetInfo* info = engine->entityMgr->GetSelected()->GetPlanet();
 	if (info) {
 		std::string entityInfo = "Selected Entity: " + info->name + "\n"
 			+ "Simulation speed: "; //TODO: get simSpeed from SimMgr
@@ -58,4 +59,8 @@ void UIMgr::Tick(float dt) {
 	} else {
 		entityInfoTB->setText("Selected Entity: None");
 	}
+}
+
+void UIMgr::Stop() {
+
 }
