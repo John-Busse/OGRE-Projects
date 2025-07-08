@@ -18,14 +18,15 @@ Engine::Engine()
 	  gfxMgr(nullptr),
 	  inputMgr(nullptr),
 	  camMgr(nullptr),
-	  running(true) {
+	  running(true),
+	  simSpeed(1) {
     }
 
 Engine::~Engine() {
 }
 
 void Engine::Init() {
-    // Initialize managers here
+    // Create managers
     entityMgr = new EntityMgr(this);
     managers.push_back(entityMgr);
     simMgr = new SimMgr(this);
@@ -62,12 +63,12 @@ void Engine::Run() {
 
     float oldTime = timer->getMicroseconds() / MICROSEC_PER_SEC;
     float newTime = oldTime;
-    float delta = newTime - oldTime;
+    float delta = (newTime - oldTime);
     while (running) {
         TickAll(delta);
 
         newTime = timer->getMicroseconds() / MICROSEC_PER_SEC;
-        delta = newTime - oldTime;
+        delta = (newTime - oldTime) * simSpeed;
         oldTime = newTime;
     }
 }
@@ -80,5 +81,12 @@ void Engine::Cleanup() {
 			delete manager;
 		}
 	}
-	delete managers;
+	managers.clear();
+}
+
+void Engine::SetSpeed(bool up) {
+	int speed = 1 * (up ? 1 : -1);
+
+	simSpeed += speed;
+	simSpeed = Clamp <int> (-1, 3, simSpeed);
 }

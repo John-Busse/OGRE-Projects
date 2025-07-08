@@ -7,6 +7,12 @@
 
 #include "main.h"
 #include "mgr.h"
+#include "camMgr.h"
+#include "entityMgr.h"
+#include "simMgr.h"
+#include "gfxMgr.h"
+#include "inputMgr.h"
+#include "uiMgr.h"
 
 // forward declarations
 class CamMgr;
@@ -34,9 +40,12 @@ class Engine {
         UIMgr *uiMgr;
 
         bool IsRunning() const { return running; }
+        void SetSpeed(bool);
+        int GetSpeed() { return simSpeed; }
         void Stop() { running = false; }
     
     private:
         bool running;
+        int simSpeed;
         std::vector<Mgr*> managers;
 };
