@@ -26,6 +26,7 @@ void SimMgr::Load() {
 }
 
 void SimMgr::Tick(float dt) {
+	dt *= engine->GetSpeed();
 	stackIndex = 0;
 	posStack.push(Ogre::Vector3::ZERO);
 	SetPos(1, dt);
@@ -40,20 +41,32 @@ void SimMgr::Stop() {
 }
 
 void SimMgr::CreateScene() {
+	CreateLight();
 	CreateSkybox();
 	CreateEntities();
 }
 
+void SimMgr::CreateLight() {
+	Ogre::Light* pointLight = engine->gfxMgr->getSceneMgr()->createLight("PointLight");
+	pointLight->setType(Ogre::Light::LT_POINT);
+	pointLight->setDiffuseColour(1.0, 1.0, 1.0);
+	pointLight->setSpecularColour(1.0, 1.0, 1.0);
+
+	Ogre::SceneNode* lightNode = engine->gfxMgr->getSceneMgr()->getRootSceneNode()->createChildSceneNode();
+	lightNode->attachObject(pointLight);
+	lightNode->setPosition(Ogre::Vector3(0, 0, 0));
+}
+
 void SimMgr::CreateSkybox() {
 	//TODO: Custom Skybox material
-	engine->gfxMgr->getSceneMgr()->setSkyBox(true, "Examples/Space");
+	//engine->gfxMgr->getSceneMgr()->setSkyBox(true, "Examples/SpaceSkyBox", 60000);
 
 	engine->gfxMgr->getSceneMgr()->setAmbientLight(Ogre::ColourValue(0.1, 0.1, 0.1));
 	engine->gfxMgr->getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 }
 
 void SimMgr::CreateEntities() {
-	std::ifstream fin("planetInfo.json");
+	std::ifstream fin("assets/planetInfo.json");
 	json data = json::parse(fin);
 	int moons = 0;
 	std::vector<std::pair<float, int>> satellites;
@@ -64,6 +77,7 @@ void SimMgr::CreateEntities() {
 		pInfo->numMoons = data[i]["numMoons"];
 		pInfo->scale = data[i]["scale"];
 		pInfo->orbitDist = data[i]["orbitDist"];
+		pInfo->orbitSpeed = data[i]["orbitSpeed"];
 		pInfo->orbitTilt = data[i]["orbitTilt"];
 		pInfo->rotateSpeed = data[i]["rotateSpeed"];
 		pInfo->sceneName = data[i]["sceneName"];
@@ -83,6 +97,7 @@ void SimMgr::CreateEntities() {
 			satellites.push_back(std::make_pair(pInfo->orbitDist, pInfo->numMoons));
 		}
 	}
+	engine->entityMgr->SetSelected(0);
 }
 
 void SimMgr::SetPos(int numMoons, float dt) {

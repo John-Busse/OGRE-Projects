@@ -23,6 +23,7 @@ class SimMgr : public Mgr {
 
 		void CreateScene();
 
+		void CreateLight();
 		void CreateSkybox();
 		void CreateEntities();
 
