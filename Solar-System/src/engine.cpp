@@ -29,10 +29,10 @@ void Engine::Init() {
     // Create managers
     entityMgr = new EntityMgr(this);
     managers.push_back(entityMgr);
-    simMgr = new SimMgr(this);
-    managers.push_back(simMgr);
     gfxMgr = new GfxMgr(this);
     managers.push_back(gfxMgr);
+    simMgr = new SimMgr(this);
+    managers.push_back(simMgr);
     camMgr = new CamMgr(this);
     managers.push_back(camMgr);
     inputMgr = new InputMgr(this);
@@ -40,11 +40,12 @@ void Engine::Init() {
     uiMgr = new UIMgr(this);
     managers.push_back(uiMgr);
 
+    int i = 0;
     //initialize all managers
 	for (Mgr* manager : managers) {
+		std::cout << i++ << "\n";
 		manager->Init();
 	}
-	//load initial data
 	for (Mgr* manager : managers) {
 		manager->Load();
 	}
@@ -68,7 +69,7 @@ void Engine::Run() {
         TickAll(delta);
 
         newTime = timer->getMicroseconds() / MICROSEC_PER_SEC;
-        delta = (newTime - oldTime) * simSpeed;
+        delta = (newTime - oldTime);
         oldTime = newTime;
     }
 }
