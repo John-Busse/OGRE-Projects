@@ -20,6 +20,8 @@ class CamMgr : public Mgr {
 
 		void ResetAngle();
 
+		Ogre::Vector3 GetPos() { return camPos; }
+		Ogre::Vector3 GetFocus() { return focusPos; }
 		void SetPos(Ogre::Vector3 pos);
 		void SetRadius(float planetScale);
 
