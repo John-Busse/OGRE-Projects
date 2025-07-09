@@ -27,7 +27,7 @@
       <file name="NeptuneRing.material" />
     </item>
     <item type="material" >
-      <file name="PlanetMaterial.material" />
+      <file name="NeptuneMaterial.material" />
     </item>
   </externals>
   <environment >

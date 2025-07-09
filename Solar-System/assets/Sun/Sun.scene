@@ -16,7 +16,7 @@
   </nodes>
   <externals >
     <item type="material" >
-      <file name="PlanetMaterial.material" />
+      <file name="SunMaterial.material" />
     </item>
   </externals>
   <environment >
