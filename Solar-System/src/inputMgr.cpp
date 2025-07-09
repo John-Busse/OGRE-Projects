@@ -98,18 +98,18 @@ bool InputMgr::isKeyDown(int key) {
 void InputMgr::ProcessInput(float dt) {
 	// W/S: Zoom camera in/out
 	if (isKeyDown('w'))
-		engine->camMgr->MoveZ(true, engine->entityMgr->GetSelected()->GetPlanet()->scale, dt);
-	if (isKeyDown('s'))
 		engine->camMgr->MoveZ(false, engine->entityMgr->GetSelected()->GetPlanet()->scale, dt);
+	if (isKeyDown('s'))
+		engine->camMgr->MoveZ(true, engine->entityMgr->GetSelected()->GetPlanet()->scale, dt);
 	// A/D: Rotate camera left/right
 	if (isKeyDown('a'))
-		engine->camMgr->MoveX(false, dt);
-	if (isKeyDown('d'))
 		engine->camMgr->MoveX(true, dt);
+	if (isKeyDown('d'))
+		engine->camMgr->MoveX(false, dt);
 	// R/F: Rotate camera up/down
 	if (isKeyDown('r'))
-		engine->camMgr->MoveY(true, dt);
-	if (isKeyDown('f'))
 		engine->camMgr->MoveY(false, dt);
+	if (isKeyDown('f'))
+		engine->camMgr->MoveY(true, dt);
 
 }
