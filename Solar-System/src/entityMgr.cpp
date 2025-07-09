@@ -43,18 +43,6 @@ void EntityMgr::CreateEntity(Ogre::Vector3 pos, PlanetInfo *planetInfo) {
 	entities.push_back(entPtr);
 }
 
-void EntityMgr::SelectNextEntity() {
-	if (entities.size() <= 0) {
-		throw std::runtime_error("Create a game entity before selecting one");
-
-	if (selectedIndex >= 0)
-		selectedEntity->SetSelected(false);
-	selectedIndex = (selectedIndex + 1) % entities.size();
-	selectedEntity = entities[selectedIndex];
-	selectedEntity->SetSelected(true);
-	}
-}
-
 Entity* EntityMgr::GetEntityByIndex(int index) {
 	return entities[index];
 }
