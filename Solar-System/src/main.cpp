@@ -10,9 +10,10 @@
 int main(int argc, char **argv) {
 	try {
 		Engine *engine = new Engine();
-		engine->Init();
 		engine->Run();
 		engine->Cleanup();
+		delete engine;
+		engine = nullptr;
 	} catch (const std::exception &e) {
 		std::cerr << "Exception caught: " << e.what() << "\n";
 		return 1;
