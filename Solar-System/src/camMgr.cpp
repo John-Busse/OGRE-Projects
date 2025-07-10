@@ -65,6 +65,7 @@ void CamMgr::Tick(float dt) {
 		SetRadius(selected->GetPlanet()->scale);
 		ResetAngle();
 		updateCam = false;
+		cameraNode->resetOrientation();
 	}
 
 	cameraNode->setPosition(camPos);
@@ -88,7 +89,7 @@ void CamMgr::ResetAngle() {
 }
 
 void CamMgr::SetRadius(float planetScale) {
-	radius = 5.0f * planetScale;
+	radius = 10.0f * planetScale;
 }
 
 //set focus position, update view
@@ -120,5 +121,5 @@ void CamMgr::MoveZ(bool in, float scale, float delta) {
 	float direction = 2.0f * delta * (in ? 1.0f : -1.0f) * scale;
 	radius += direction;
 
-	radius = Clamp <float> (1.5f * scale, 10.0f * scale, radius);
+	radius = Clamp <float> (2.0f * scale, 20.0f * scale, radius);
 }
