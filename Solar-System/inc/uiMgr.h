@@ -16,10 +16,9 @@ class UIMgr : public Mgr {
 		UIMgr(Engine*);
 		~UIMgr();
 
-		void Init() override;
 		void Load() override;
 		void Tick(float) override;
-		void Stop();
+		
 	private:
 		OgreBites::TrayManager* trayMgr;
 

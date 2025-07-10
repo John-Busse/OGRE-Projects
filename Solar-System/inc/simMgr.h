@@ -16,17 +16,16 @@ class SimMgr : public Mgr {
 		SimMgr(Engine* engine);
 		~SimMgr();
 
-		void Init() override;
 		void Load() override;
-		void Tick(float) override;
-		void Stop() override;
-
-		void CreateScene();
+		void Tick(float dt) override;
 
 		void CreateLight();
 		void CreateSkybox();
 		void CreateEntities();
 
+		/* a recursive function using a position vector3 stack to handle inherited movement
+		@param numMoons the number of moons this planet has
+		@param dt delta time */
 		void SetPos(int, float);
 	private:
 		int stackIndex;

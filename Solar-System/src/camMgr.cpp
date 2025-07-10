@@ -8,27 +8,27 @@
 #include "entity.h"
 
 CamMgr::CamMgr(Engine *engine)
-	: Mgr(engine) {
+	: Mgr(engine),
+	cameraNode(nullptr),
+	radius(5.0f),
+	theta(270.0f),
+	phi(90.0f),
+	camPos(Ogre::Vector3(0.0f, 0.0f, -50.0f)),
+	focusPos(Ogre::Vector3(0.0f, 0.0f, 0.0f)) {
 	this->engine = engine;
-	cameraNode = nullptr;
-	radius = 5.0f;
-	theta = 270.0f;
-	phi = 90.0f;
-	camPos = Ogre::Vector3(0.0f, 0.0f, -50.0f);
-	focusPos = Ogre::Vector3(0.0f, 0.0f, 0.0f);
 	updateCam = true;
 }
 
 CamMgr::~CamMgr() {
-
 }
 
-void CamMgr::Init() {
+void CamMgr::Load() {
 	//initialize camera
 	Ogre::Camera* camera = engine->gfxMgr->getSceneMgr()->createCamera("MainCamera");
 	camera->setNearClipDistance(5);
 	camera->setFarClipDistance(5000);
 
+	//set up camera node
 	cameraNode = engine->gfxMgr->getSceneMgr()->getRootSceneNode()->createChildSceneNode("CameraNode");
 	cameraNode->setPosition(camPos);
 	cameraNode->lookAt(focusPos, Ogre::Node::TS_WORLD);
@@ -41,24 +41,8 @@ void CamMgr::Init() {
 		Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 }
 
-void CamMgr::Load() {
-	//load initial scene data here, if any
-}
-
 void CamMgr::Tick(float dt) {
-	//TODO: get current selected entity
-	//focus pos = entity position
-	//SetPos()
-	/*
-	if (thisPlanet->GetSelected()){
-		engine->camMgr->SetPos(posStack.top());
-		if (engine->camMgr->GetUpdateCam()) {
-			engine->camMgr->SetRadius(thisPlanet->GetPlanet()->scale);
-			engine->camMgr->ResetAngle(posStack.top());
-			engine->camMgr->SetUpdateCam(false);
-		}
-	}
-	*/
+
 	Entity* selected = engine->entityMgr->GetSelected();
 	SetPos(selected->GetPosition());
 	if (updateCam) {
@@ -70,10 +54,7 @@ void CamMgr::Tick(float dt) {
 
 	cameraNode->setPosition(camPos);
 	cameraNode->lookAt(focusPos,Ogre::Node::TS_WORLD);
-}
-
-void CamMgr::Stop() {
-
+	cameraNode->resetOrientation();
 }
 
 void CamMgr::ResetAngle() {
@@ -92,15 +73,13 @@ void CamMgr::SetRadius(float planetScale) {
 	radius = 10.0f * planetScale;
 }
 
-//set focus position, update view
-void CamMgr::SetPos(Ogre::Vector3 pos) {
-	camPos = Ogre::Vector3(	pos.x + radius * sin(phi.valueRadians()) * cos(theta.valueRadians()),
-							pos.y + radius * cos(phi.valueRadians()),
-							pos.z + radius * sin(phi.valueRadians()) * sin(theta.valueRadians()));
-	focusPos = pos;
+void CamMgr::SetPos(Ogre::Vector3 planetPos) {
+	camPos = Ogre::Vector3(	planetPos.x + radius * sin(phi.valueRadians()) * cos(theta.valueRadians()),
+							planetPos.y + radius * cos(phi.valueRadians()),
+							planetPos.z + radius * sin(phi.valueRadians()) * sin(theta.valueRadians()));
+	focusPos = planetPos;
 }
 
-//rotate camera left or right (x-axis) with A and D keys
 void CamMgr::MoveX(bool right, float delta){
 	float direction = 50.0f * delta * (right ? 1.0f : -1.0f);
 	theta += Ogre::Degree(direction);
@@ -108,7 +87,6 @@ void CamMgr::MoveX(bool right, float delta){
 	theta = FixAngle(theta.valueDegrees());
 }
 
-//rotate camera up or down (y-axis) with R and F keys
 void CamMgr::MoveY(bool up, float delta) {
 	float direction = 10.0f * delta * (up ? 1.0f : -1.0f);
 	phi += Ogre::Degree(direction);
@@ -116,7 +94,6 @@ void CamMgr::MoveY(bool up, float delta) {
 	phi = Clamp <float> (1.0f, 180.0f, phi.valueDegrees());
 }
 
-//zoom camera in or out (z-axis) with W and S keys
 void CamMgr::MoveZ(bool in, float scale, float delta) {
 	float direction = 2.0f * delta * (in ? 1.0f : -1.0f) * scale;
 	radius += direction;
