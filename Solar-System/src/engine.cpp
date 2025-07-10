@@ -12,21 +12,9 @@
 #include "uiMgr.h"
 
 Engine::Engine()
-    : uiMgr(nullptr),
-	  entityMgr(nullptr),
-	  simMgr(nullptr),
-	  gfxMgr(nullptr),
-	  inputMgr(nullptr),
-	  camMgr(nullptr),
-	  running(true),
+    : running(true),
 	  simSpeed(1) {
-    }
-
-Engine::~Engine() {
-}
-
-void Engine::Init() {
-    // Create managers
+            // Create managers
     entityMgr = new EntityMgr(this);
     managers.push_back(entityMgr);
     gfxMgr = new GfxMgr(this);
@@ -40,14 +28,13 @@ void Engine::Init() {
     uiMgr = new UIMgr(this);
     managers.push_back(uiMgr);
 
-    //initialize all managers
-	for (Mgr* manager : managers) {
-		manager->Init();
-	}
 	//load initial data
 	for (Mgr* manager : managers) {
 		manager->Load();
 	}
+}
+
+Engine::~Engine() {
 }
 
 void Engine::TickAll(float deltaTime) {
@@ -71,16 +58,21 @@ void Engine::Run() {
         delta = (newTime - oldTime);
         oldTime = newTime;
     }
+    delete timer;
+    timer = nullptr;
 }
 
 void Engine::Cleanup() {
     // Cleanup managers
+    while (!managers.empty()) {
+        managers.pop_back();
+    }
+    /*
 	for (Mgr* manager : managers) {
 		if (manager) {
-			manager->Stop();
 			delete manager;
 		}
-	}
+	}*/
 	managers.clear();
 }
 

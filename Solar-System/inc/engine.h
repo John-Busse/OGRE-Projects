@@ -27,9 +27,8 @@ class Engine {
         Engine();
         ~Engine();
 
-        void Init();
         void Run();
-        void TickAll(float);
+        void TickAll(float dt);
         void Cleanup();
 
         EntityMgr *entityMgr;
@@ -40,9 +39,9 @@ class Engine {
         UIMgr *uiMgr;
 
         bool IsRunning() const { return running; }
-        void SetSpeed(bool);
-        int GetSpeed() { return simSpeed; }
-        void Stop() { running = false; }
+        void SetSpeed(bool up);
+        float GetSpeed() const { return simSpeed * 0.1; }
+        void Stop() { running = false; }    //Sets running to false
     
     private:
         bool running;
