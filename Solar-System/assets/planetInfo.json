@@ -7,7 +7,8 @@
     "orbitSpeed": 0,
     "orbitTilt": 0,
     "rotateSpeed": 2.7,
-    "sceneName": "assets/Sun/Sun.scene"
+    "sceneName": "assets/Sun/Sun.scene",
+    "index": 0
   },
   {
     "name": "Mercury",
@@ -17,7 +18,8 @@
     "orbitSpeed": 4.15,
     "orbitTilt": 3.38,
     "rotateSpeed": 8,
-    "sceneName": "assets/Mercury/Mercury.scene"
+    "sceneName": "assets/Mercury/Mercury.scene",
+    "index": 1
   },
   {
     "name": "Venus",
@@ -27,7 +29,8 @@
     "orbitSpeed": 1.62,
     "orbitTilt": 3.86,
     "rotateSpeed": 5,
-    "sceneName": "assets/Venus/Venus.scene"
+    "sceneName": "assets/Venus/Venus.scene",
+    "index": 2
   },
   {
     "name": "Earth",
@@ -37,7 +40,8 @@
     "orbitSpeed": 1,
     "orbitTilt": 7.25,
     "rotateSpeed": 1,
-    "sceneName": "assets/Earth/Earth.scene"
+    "sceneName": "assets/Earth/Earth.scene",
+    "index": 3
   },
   {
     "name": "Luna",
@@ -47,7 +51,8 @@
     "orbitSpeed": 0.075,
     "orbitTilt": 5.145,
     "rotateSpeed": 0.075,
-    "sceneName": "assets/Moon/Moon.scene"
+    "sceneName": "assets/Moon/Moon.scene",
+    "index": -1
   },
   {
     "name": "Mars",
@@ -57,7 +62,8 @@
     "orbitSpeed": 0.53,
     "orbitTilt": 5.65,
     "rotateSpeed": 1.025,
-    "sceneName": "assets/Mars/Mars.scene"
+    "sceneName": "assets/Mars/Mars.scene",
+    "index": 4
   },
   {
     "name": "Jupiter",
@@ -67,7 +73,8 @@
     "orbitSpeed": 0.084,
     "orbitTilt": 6.09,
     "rotateSpeed": 0.4125,
-    "sceneName": "assets/Jupiter/Jupiter.scene"
+    "sceneName": "assets/Jupiter/Jupiter.scene",
+    "index": 5
   },
   {
     "name": "Saturn",
@@ -77,17 +84,19 @@
     "orbitSpeed": 0.034,
     "orbitTilt": 5.51,
     "rotateSpeed": 0.43,
-    "sceneName": "assets/Saturn/Saturn.scene"
+    "sceneName": "assets/Saturn/Saturn.scene",
+    "index": 6
   },
   {
     "name": "Uranus",
     "numMoons": 0,
-    "scale": 4.0,
+    "scale": 4,
     "orbitDist": 1787,
     "orbitSpeed": 0.012,
     "orbitTilt": 6.48,
     "rotateSpeed": 0.71805,
-    "sceneName": "assets/Uranus/Uranus.scene"
+    "sceneName": "assets/Uranus/Uranus.scene",
+    "index": 7
   },
   {
     "name": "Neptune",
@@ -97,7 +106,8 @@
     "orbitSpeed": 0.06,
     "orbitTilt": 6.43,
     "rotateSpeed": 0.667,
-    "sceneName": "assets/Neptune/Neptune.scene"
+    "sceneName": "assets/Neptune/Neptune.scene",
+    "index": 8
   },
   {
     "name": "Pluto",
@@ -107,6 +117,7 @@
     "orbitSpeed": 0.004,
     "orbitTilt": 11.88,
     "rotateSpeed": 6.375,
-    "sceneName": "assets/Pluto/Pluto.scene"
+    "sceneName": "assets/Pluto/Pluto.scene",
+    "index": 9
   }
 ]
