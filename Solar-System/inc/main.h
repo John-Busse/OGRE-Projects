@@ -45,6 +45,7 @@ struct PlanetInfo {
 	float orbitDist, orbitSpeed, orbitTilt;
 	//rotation info
 	float rotateSpeed;
+	int index;
 };
 
 using json = nlohmann::json;
