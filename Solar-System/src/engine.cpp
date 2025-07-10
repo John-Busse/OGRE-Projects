@@ -40,12 +40,11 @@ void Engine::Init() {
     uiMgr = new UIMgr(this);
     managers.push_back(uiMgr);
 
-    int i = 0;
     //initialize all managers
 	for (Mgr* manager : managers) {
-		std::cout << i++ << "\n";
 		manager->Init();
 	}
+	//load initial data
 	for (Mgr* manager : managers) {
 		manager->Load();
 	}
