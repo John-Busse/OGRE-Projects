@@ -61,7 +61,7 @@ void SimMgr::CreateSkybox() {
 	//TODO: Custom Skybox material
 	//engine->gfxMgr->getSceneMgr()->setSkyBox(true, "Examples/SpaceSkyBox", 60000);
 
-	engine->gfxMgr->getSceneMgr()->setAmbientLight(Ogre::ColourValue(0.1, 0.1, 0.1));
+	engine->gfxMgr->getSceneMgr()->setAmbientLight(Ogre::ColourValue(1, 1, 1));
 	engine->gfxMgr->getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 }
 
@@ -81,7 +81,6 @@ void SimMgr::CreateEntities() {
 		pInfo->orbitTilt = data[i]["orbitTilt"];
 		pInfo->rotateSpeed = data[i]["rotateSpeed"];
 		pInfo->sceneName = data[i]["sceneName"];
-
 
 		for (int i = 0; i < satellites.size(); i++) {
 			if (satellites[i].second > 0) {
