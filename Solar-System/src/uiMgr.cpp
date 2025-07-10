@@ -18,12 +18,14 @@ UIMgr::UIMgr(Engine* engine) :
 }
 
 UIMgr::~UIMgr() {
-	delete trayMgr;
-	trayMgr = nullptr;
-	delete entityInfoTB;
-	entityInfoTB = nullptr;
-	delete engineControlsTB;
-	engineControlsTB = nullptr;
+	if (entityInfoTB) {
+		delete entityInfoTB;
+		entityInfoTB = nullptr;
+	}
+	if (engineControlsTB) {
+		delete engineControlsTB;
+		engineControlsTB = nullptr;
+	}
 }
 
 void UIMgr::Init() {
@@ -51,10 +53,13 @@ void UIMgr::Load() {
 
 void UIMgr::Tick(float dt) {
 	//update UI elements here
-	PlanetInfo* info = engine->entityMgr->GetSelected()->GetPlanet();
-	if (info) {
-		std::string entityInfo = "Selected Entity: " + info->name + "\n"
-			+ "Simulation speed: "; //TODO: get simSpeed from SimMgr
+	Entity* selected = engine->entityMgr->GetSelected();
+	if (selected) {
+		std::string entityInfo = "Selected Entity: " + selected->GetPlanet()->name + "\n"
+			+ "Simulation speed: " + std::to_string(engine->GetSpeed()) + "\n"
+			+ "Planet position: " + Ogre::StringConverter::toString(selected->GetPosition()) + "\n"
+			+ "Camera position: " + Ogre::StringConverter::toString(engine->camMgr->GetPos()) + "\n"
+			+ "Camera focus position: " + Ogre::StringConverter::toString(engine->camMgr->GetFocus()) + "\n";
 		entityInfoTB->setText(entityInfo);
 	} else {
 		entityInfoTB->setText("Selected Entity: None");
