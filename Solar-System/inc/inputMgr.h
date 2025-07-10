@@ -13,19 +13,17 @@ class InputMgr : public Mgr, public OgreBites::InputListener {
 		InputMgr(Engine *engine);
 		~InputMgr();
 
-		void Init() override;
 		void Load() override;
-		void Tick(float) override;
-		void Stop() override;
+		void Tick(float dt) override;
 
 		// Input handling methods
 		bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 		bool keyReleased(const OgreBites::KeyboardEvent& evt) override;
 
-		bool isKeyDown(int key);
+		bool isKeyDown(int key) const;
 		
-		void ProcessInput(float);
-		void UpdateCamera(float);
+		void ProcessInput(float dt);
+		void UpdateCamera(float dt);
 
 	private:
 		Engine *engine;

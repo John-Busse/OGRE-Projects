@@ -18,20 +18,12 @@ InputMgr::InputMgr(Engine *engine)
 InputMgr::~InputMgr() {
 }
 
-void InputMgr::Init() {
-	engine->gfxMgr->addInputListener(this);
-}
-
 void InputMgr::Load() {
-
+engine->gfxMgr->addInputListener(this);
 }
 
 void InputMgr::Tick(float dt) {
 	ProcessInput(dt);
-}
-
-void InputMgr::Stop() {
-
 }
 
 // input press events
@@ -43,7 +35,7 @@ bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 			break;
 		// Space: Reset view angle
 		case OgreBites::SDLK_SPACE:
-			//TODO: reset view angle
+			engine->camMgr->ResetAngle();
 			break;
 		// Left/Right: adjust simulation speed
 		case OgreBites::SDLK_LEFT:
@@ -61,7 +53,7 @@ bool InputMgr::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		case '7':	//uranus
 		case '8':	//neptune
 		case '9':	//pluto
-			if(engine->entityMgr->SetSelected(evt.keysym.sym - '0'))	//if this is a new planet
+			if(engine->entityMgr->SetSelected(evt.keysym.sym - '0'))
 				engine->camMgr->SetUpdateCam(true);
 			break;
 		//camera controls

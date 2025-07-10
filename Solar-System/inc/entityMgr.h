@@ -17,25 +17,15 @@ class EntityMgr : public Mgr {
 		EntityMgr(Engine* Engine);
 		~EntityMgr();
 
-		void Init() override;
 		void Load() override;
-		void Tick(float) override;
-		void Stop() override;
+		void Tick(float dt) override;
 
 		void CreateEntity(Ogre::Vector3, PlanetInfo*);
 
 		Entity* GetSelected() const { return selectedEntity; }
-		Entity* GetEntityByIndex(int);
-		bool SetSelected(int index) {
-			bool newIndex = (index != selectedIndex);
-			if (index > entities.size()) {
-				throw std::runtime_error("EntityMgr::SetSelected() Error: index out of range\n");
-			}
-
-			selectedIndex = index;
-			selectedEntity = entities[index];
-			return newIndex;
-		}
+		Entity* GetEntityByIndex(int) const;
+		
+		bool SetSelected(int index);
 	private:
 		int count = 0;
 		Engine* engine;

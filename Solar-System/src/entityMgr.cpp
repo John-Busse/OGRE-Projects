@@ -14,19 +14,12 @@ EntityMgr::EntityMgr(Engine* engine) : Mgr(engine) {
 EntityMgr::~EntityMgr() {
 	for (Entity* entity : entities) {
 		delete entity;
+		entity = nullptr;
 	}
 	entities.clear();
 }
 
-void EntityMgr::Init() {
-
-}
-
 void EntityMgr::Load() {
-
-}
-
-void EntityMgr::Stop() {
 
 }
 
@@ -46,3 +39,21 @@ void EntityMgr::CreateEntity(Ogre::Vector3 pos, PlanetInfo *planetInfo) {
 Entity* EntityMgr::GetEntityByIndex(int index) {
 	return entities[index];
 }
+
+//Update the selected entity
+//@returns true if this is a new planet, false if it's a repeated input
+bool EntityMgr::SetSelected(int index){
+			bool newIndex = (index != selectedIndex);
+			if (index > entities.size() || index < 0) {
+				throw std::runtime_error("EntityMgr::SetSelected() Error: index out of range\n");
+			}
+
+			selectedIndex = index;
+			for (Entity* entity : entities) {
+				if (entity->GetPlanet()->index == index) {
+					selectedEntity = entity;
+					break;
+				}
+			}
+			return newIndex;
+		}

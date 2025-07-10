@@ -9,10 +9,11 @@
 
 GfxMgr::GfxMgr(Engine *engine)
 	: Mgr(engine), 
-	OgreBites::ApplicationContext("OGRE Solar System") {
+	OgreBites::ApplicationContext("OGRE Solar System"),
+	root(nullptr),
+	sceneMgr(nullptr) {
 	this->engine = engine;
-	root = nullptr;
-	sceneMgr = nullptr;
+	initApp();	//REMINDER: initApp is a function built into ApplicationContext that will call setup();
 }
 
 GfxMgr::~GfxMgr() {
@@ -20,14 +21,13 @@ GfxMgr::~GfxMgr() {
 		delete root;
 		root = nullptr;
 	}
-}
-
-void GfxMgr::Init() {
-	initApp();
+	if (sceneMgr) {
+		delete sceneMgr;
+		sceneMgr = nullptr;
+	}
 }
 
 void GfxMgr::setup() {
-	// Initialize the root object
 	root = getRoot();
 	root->initialise(false);
 	createWindow("Solar System", 1280, 720);
@@ -64,10 +64,6 @@ void GfxMgr::Tick(float deltaTime) {
 	if (getRenderWindow()->isClosed() || !root->renderOneFrame()) {
 		engine->Stop();
 	}
-}
-
-void GfxMgr::Stop() {
-
 }
 
 bool GfxMgr::frameRenderingQueued(const Ogre::FrameEvent& evt) {

@@ -13,15 +13,12 @@ class GfxMgr : public Mgr, public OgreBites::ApplicationContext {
 		GfxMgr(Engine *engine);
 		~GfxMgr();
 
-		void Init() override;
 		void setup() override;
 		void Load() override;
-		void Tick(float) override;
-		void Stop() override;
+		void Tick(float dt) override;
 
-		bool frameRenderingQueued(const Ogre::FrameEvent&);
+		bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 
-		//getters
 		Ogre::SceneManager* getSceneMgr() { return sceneMgr; }
 
 	private:

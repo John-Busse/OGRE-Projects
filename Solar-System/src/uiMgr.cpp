@@ -22,18 +22,23 @@ UIMgr::~UIMgr() {
 		delete entityInfoTB;
 		entityInfoTB = nullptr;
 	}
+	if (entityControlsTB) {
+		delete entityControlsTB;
+		entityControlsTB = nullptr;
+	}
 	if (engineControlsTB) {
 		delete engineControlsTB;
 		engineControlsTB = nullptr;
 	}
-}
-
-void UIMgr::Init() {
-	trayMgr = new OgreBites::TrayManager("UI Manager", engine->gfxMgr->getRenderWindow());
-	engine->gfxMgr->addInputListener(trayMgr);
+	if (trayMgr) {
+		delete trayMgr;
+		trayMgr = nullptr;
+	}
 }
 
 void UIMgr::Load() {
+	trayMgr = new OgreBites::TrayManager("UI Manager", engine->gfxMgr->getRenderWindow());
+	engine->gfxMgr->addInputListener(trayMgr);
 	trayMgr->hideCursor();
 
 	//load UI elements
@@ -56,7 +61,7 @@ void UIMgr::Tick(float dt) {
 	Entity* selected = engine->entityMgr->GetSelected();
 	if (selected) {
 		std::string entityInfo = "Selected Entity: " + selected->GetPlanet()->name + "\n"
-			+ "Simulation speed: " + std::to_string(engine->GetSpeed()) + "\n"
+			+ "Simulation speed: " + std::to_string(int(engine->GetSpeed() * 10.0f)) + "\n"
 			+ "Planet position: " + Ogre::StringConverter::toString(selected->GetPosition()) + "\n"
 			+ "Camera position: " + Ogre::StringConverter::toString(engine->camMgr->GetPos()) + "\n"
 			+ "Camera focus position: " + Ogre::StringConverter::toString(engine->camMgr->GetFocus()) + "\n";
@@ -64,8 +69,4 @@ void UIMgr::Tick(float dt) {
 	} else {
 		entityInfoTB->setText("Selected Entity: None");
 	}
-}
-
-void UIMgr::Stop() {
-
 }

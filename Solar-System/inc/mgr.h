@@ -12,10 +12,9 @@ class Mgr {
         Mgr(Engine *engine) : engine(engine) {}
         virtual ~Mgr() {}
 
-        virtual void Init() {}
+        //Load initial dependent data
         virtual void Load() {}
-        virtual void Tick(float) {}
-        virtual void Stop() {}
+        virtual void Tick(float dt) {}
     
     protected:
         Engine *engine;

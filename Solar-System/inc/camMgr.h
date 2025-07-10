@@ -13,23 +13,27 @@ class CamMgr : public Mgr {
 		CamMgr(Engine *engine);
 		~CamMgr();
 
-		void Init() override;
 		void Load() override;
-		void Tick(float) override;
-		void Stop() override;
+		void Tick(float dt) override;
 
 		void ResetAngle();
 
-		Ogre::Vector3 GetPos() { return camPos; }
-		Ogre::Vector3 GetFocus() { return focusPos; }
-		void SetPos(Ogre::Vector3 pos);
+		Ogre::Vector3 GetPos() const { return camPos; }
+		Ogre::Vector3 GetFocus() const { return focusPos; }
+		/*Updates the camera position and focus position
+		*/
+		void SetPos(Ogre::Vector3 planetPos);
 		void SetRadius(float planetScale);
 
+		//rotate camera left or right (x-axis) with A and D keys
 		void MoveX(bool right, float delta);
+		//rotate camera up or down (y-axis) with R and F keys
 		void MoveY(bool up, float delta);
+		//zoom camera in or out (z-axis) with W and S keys
+		//zoom is multipled by the planet scale for more consistent movement
 		void MoveZ(bool in, float scale, float delta);
 
-		bool GetUpdateCam() { return updateCam; }
+		bool GetUpdateCam() const { return updateCam; }
 		void SetUpdateCam(bool val) { updateCam = val; }
 	private:
 		Ogre::SceneNode* cameraNode;
