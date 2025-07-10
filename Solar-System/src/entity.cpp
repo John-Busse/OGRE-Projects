@@ -34,8 +34,11 @@ Entity::Entity(Engine* engine, int id, PlanetInfo* pInfo, Ogre::Vector3 pos) :
 void Entity::Tick(float dt) {
 	//TODO: physics here maybe?
 	//render
-	heading += info->rotateSpeed * dt;
+	float delta = info->rotateSpeed * dt * 0.1 * engine->GetSpeed();
+	heading += delta;
 	sceneNode->setPosition(position);
 	//sceneNode->resetOrientation();
-	sceneNode->yaw(Ogre::Degree(-heading));
+	if (delta != 0.0f) {
+		sceneNode->yaw(Ogre::Degree(-heading));
+	}
 }
