@@ -18,36 +18,19 @@ class Entity {
 
 		void Tick(float);
 
-		//getters and setters
-		//identity
-		//sceneNode
-		//position
-		Ogre::Vector3 GetPosition() { return position; }
+		Ogre::Vector3 GetPosition() const { return position; }
+		bool GetSelected() const { return isSelected; }
+		float GetAngle() const { return orbitAngle; }
+		PlanetInfo* GetPlanet() const { return info; }
+
 		void SetPosition(Ogre::Vector3 newPos) { position = newPos; }
-		//isSelected
-		bool GetSelected() { return isSelected; }
-		void SetSelected(bool select) {
-			isSelected = select;
-		}
-		//heading
-		//orbitAngle
-		float GetAngle() {
-			return orbitAngle;
-		}
-		void IncrementAngle(float value) {
-			orbitAngle += value * info->orbitSpeed;
-		}
-		//info
-		PlanetInfo* GetPlanet() {
-			return info;
-		}
+		void SetSelected(bool select) {	isSelected = select; }
+		void IncrementAngle(float value) { orbitAngle += value * info->orbitSpeed; }
 
-
-	protected:
+	private:
 		//ogre object info
 		unsigned short int identity;
 		Ogre::SceneNode* sceneNode = nullptr;
-		//Ogre::Entity* ogreEntity = nullptr;
 		//dynamic info
 		Ogre::Vector3 position = Ogre::Vector3::ZERO;
 		bool isSelected = false;

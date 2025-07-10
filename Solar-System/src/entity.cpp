@@ -31,10 +31,15 @@ Entity::Entity(Engine* engine, int id, PlanetInfo* pInfo, Ogre::Vector3 pos) :
 	 */
 }
 
+Entity::~Entity() {
+	delete info;
+	info = nullptr;
+}
+
 void Entity::Tick(float dt) {
 	//TODO: physics here maybe?
 	//render
-	float delta = info->rotateSpeed * dt * 0.1 * engine->GetSpeed();
+	float delta = info->rotateSpeed * dt * engine->GetSpeed();
 	heading += delta;
 	sceneNode->setPosition(position);
 	//sceneNode->resetOrientation();
