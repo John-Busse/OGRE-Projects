@@ -25,7 +25,7 @@ CamMgr::~CamMgr() {
 void CamMgr::Load() {
 	//initialize camera
 	Ogre::Camera* camera = engine->gfxMgr->getSceneMgr()->createCamera("MainCamera");
-	camera->setNearClipDistance(5);
+	camera->setNearClipDistance(1);
 	camera->setFarClipDistance(5000);
 
 	//set up camera node
@@ -49,12 +49,14 @@ void CamMgr::Tick(float dt) {
 		SetRadius(selected->GetPlanet()->scale);
 		ResetAngle();
 		updateCam = false;
+		std::cout << "orientation: " << cameraNode->getOrientation() << "\n";
 		cameraNode->resetOrientation();
+		std::cout << "orientation after: " << cameraNode->getOrientation() << "\n";
 	}
 
 	cameraNode->setPosition(camPos);
 	cameraNode->lookAt(focusPos,Ogre::Node::TS_WORLD);
-	cameraNode->resetOrientation();
+	//cameraNode->resetOrientation();
 }
 
 void CamMgr::ResetAngle() {
@@ -65,7 +67,7 @@ void CamMgr::ResetAngle() {
 	} else {	//otherwise, face the sunlit side of the planet
 		Ogre::Vector3 view = Ogre::Vector3(-focusPos.normalisedCopy());
 		theta = atan2(view.z, view.x) * (180.0f / M_PI);
-		phi = (acos(view.y / 1.0f) * (180.0f / M_PI)) - 30.0f;
+		phi = acos(view.y / 1.0f) * (180.0f / M_PI);
 	}
 }
 
@@ -98,5 +100,5 @@ void CamMgr::MoveZ(bool in, float scale, float delta) {
 	float direction = 2.0f * delta * (in ? 1.0f : -1.0f) * scale;
 	radius += direction;
 
-	radius = Clamp <float> (2.0f * scale, 20.0f * scale, radius);
+	radius = Clamp <float> (2.0f * scale, 50.0f * scale, radius);
 }

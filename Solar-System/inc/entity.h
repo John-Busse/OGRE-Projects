@@ -12,7 +12,7 @@ class Engine;
 class Entity {
 	public:
 		Entity(Engine*, int, PlanetInfo*, Ogre::Vector3 pos);
-		~Entity() {}
+		~Entity();
 
 		Engine* engine;
 

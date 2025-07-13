@@ -20,7 +20,7 @@ Entity::Entity(Engine* engine, int id, PlanetInfo* pInfo, Ogre::Vector3 pos) :
 	Ogre::ResourceGroupManager::getSingleton().setWorldResourceGroupName(info->name);
 	sceneNode->loadChildren(info->sceneName);
 	sceneNode->setScale(Ogre::Vector3(info->scale));
-	sceneNode->roll(Ogre::Degree(info->orbitTilt), Ogre::Node::TS_LOCAL);
+	//sceneNode->roll(Ogre::Degree(info->orbitTilt), Ogre::Node::TS_LOCAL);
 	//sceneNode->setOrientation(Ogre::Quaternion())
 
 	/*
