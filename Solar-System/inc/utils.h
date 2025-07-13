@@ -7,7 +7,7 @@
 
 #include <cmath>
 
-float FixAngle(float angle) {
+template <typename T> T FixAngle(T angle) {
 	if (angle < 0)
 		return angle + 360;
 	else if (angle > 360)

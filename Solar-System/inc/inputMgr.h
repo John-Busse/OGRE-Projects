@@ -20,7 +20,7 @@ class InputMgr : public Mgr, public OgreBites::InputListener {
 		bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 		bool keyReleased(const OgreBites::KeyboardEvent& evt) override;
 
-		bool isKeyDown(int key) const;
+		bool isKeyDown(int key);
 		
 		void ProcessInput(float dt);
 		void UpdateCamera(float dt);
