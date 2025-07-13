@@ -48,9 +48,9 @@
     "numMoons": 0,
     "scale": 0.1,
     "orbitDist": 3,
-    "orbitSpeed": 0.075,
+    "orbitSpeed": 12,
     "orbitTilt": 5.145,
-    "rotateSpeed": 12,
+    "rotateSpeed": -1,
     "sceneName": "assets/Moon/Moon.scene",
     "index": -1
   },
