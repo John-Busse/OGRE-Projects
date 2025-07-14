@@ -35,8 +35,7 @@ void SimMgr::CreateLight() {
 }
 
 void SimMgr::CreateSkybox() {
-	//TODO: Custom Skybox material
-	//engine->gfxMgr->getSceneMgr()->setSkyBox(true, "Examples/SpaceSkyBox", 60000);
+	engine->gfxMgr->getSceneMgr()->setSkyBox(true, "SolarSkyBox");
 
 	engine->gfxMgr->getSceneMgr()->setAmbientLight(Ogre::ColourValue(1, 1, 1));
 	engine->gfxMgr->getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
