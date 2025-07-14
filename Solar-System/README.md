@@ -9,14 +9,15 @@
 #### JSON file
 - ~~Use a JSON file with basic planet information for the sun, planets, and pluto~~  COMPLETE 7/9/25
 - Render all objects
-- Add rings for Jupiter, Saturn, Uranus, and Neptune
+- ~~Add rings for Jupiter, Saturn, Uranus, and Neptune~~ COMPLETE 7/9/25
 - Add major moons of Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto
 - Keep consistent scale
 #### Lighting/Shading
-- Point light under sun (or replacing sun mesh?)
+- ~~Point light under sun~~ COMPLETE 7/14/25
+- Planets cast shadows on other planets/objects
 #### Background
 - ~~load in a space skybox~~ COMPLETE 7/9/25
-- custom space skybox
+- ~~custom space skybox~~ COMPLETE 7/14/25
 #### Controls
 - ~~Input Manager class~~ COMPLETE 7/5/25
 - ~~Zoom in and out~~ (W/S) COMPLETE 7/9/25
@@ -26,12 +27,14 @@
 - ~~Reset view angle~~ (Space) COMPLETE 7/9/25
 - ~~Adjust simulation speed~~ (left/right arrows) COMPLETE 7/9/25
 #### UI
+- Readable size
 - ~~UI Manager class~~ COMPLETE 7/9/25
 - ~~Introduction text box with 'exit application' controls~~  COMPLETE 7/9/25
 - ~~Controls text box showing camera controls~~ COMPLETE 7/9/25
 - ~~Entity info panel showing current selected planet with entity class information~~ COMPLETE 7/9/25
 #### Camera/Window
 - ~~Camera Manager class~~  COMPLETE 7/8/25
+- Reset camera rotation when new planet selected
 
 ## The project is buildable, but not fully functional
 ### Dependencies
