@@ -3,12 +3,14 @@ material PlanetMaterial {
     receive_shadows on
     technique {
         pass {
+            ambient 0 0 0 0
             diffuse 0.439657 0.332452 0.212231 1.0
             specular 0.0 0.0 0 0 0
 
             // additional maps - requires RTSS
             rtshader_system {
-                lighting_stage metal_roughness
+                lighting_stage per-pixel normalised
+                shadow_mapping [light_count 1]
             }
 
             // - base_color_texture

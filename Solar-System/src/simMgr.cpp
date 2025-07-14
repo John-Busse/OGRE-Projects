@@ -26,6 +26,7 @@ void SimMgr::CreateLight() {
 	//TODO: light needs to ignore the sun somehow (first object)
 	Ogre::Light* pointLight = engine->gfxMgr->getSceneMgr()->createLight("PointLight");
 	pointLight->setType(Ogre::Light::LT_POINT);
+	pointLight->setAttenuation(5000.0f, 0.2f, 0, 0);
 	pointLight->setDiffuseColour(1.0, 1.0, 1.0);
 	pointLight->setSpecularColour(1.0, 1.0, 1.0);
 
@@ -37,7 +38,7 @@ void SimMgr::CreateLight() {
 void SimMgr::CreateSkybox() {
 	engine->gfxMgr->getSceneMgr()->setSkyBox(true, "SolarSkyBox");
 
-	engine->gfxMgr->getSceneMgr()->setAmbientLight(Ogre::ColourValue(1, 1, 1));
+	engine->gfxMgr->getSceneMgr()->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
 	engine->gfxMgr->getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 }
 
