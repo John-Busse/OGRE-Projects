@@ -11,6 +11,7 @@
 SimMgr::SimMgr(Engine *engine) : Mgr(engine) {
 	this->engine = engine;
 	stackIndex = 0;
+	maxDistance = 4000.0f;
 }
 
 SimMgr::~SimMgr() {
@@ -24,22 +25,24 @@ void SimMgr::Load() {
 
 void SimMgr::CreateLight() {
 	//TODO: light needs to ignore the sun somehow (first object)
+	engine->gfxMgr->getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 	Ogre::Light* pointLight = engine->gfxMgr->getSceneMgr()->createLight("PointLight");
 	pointLight->setType(Ogre::Light::LT_POINT);
-	pointLight->setAttenuation(5000.0f, 0.2f, 0, 0);
+	pointLight->setAttenuation(maxDistance, 0.2f, 0, 0);
 	pointLight->setDiffuseColour(1.0, 1.0, 1.0);
 	pointLight->setSpecularColour(1.0, 1.0, 1.0);
 
 	Ogre::SceneNode* lightNode = engine->gfxMgr->getSceneMgr()->getRootSceneNode()->createChildSceneNode();
 	lightNode->attachObject(pointLight);
 	lightNode->setPosition(Ogre::Vector3(0, 0, 0));
+
+	engine->gfxMgr->getSceneMgr()->setShadowFarDistance(maxDistance);
 }
 
 void SimMgr::CreateSkybox() {
 	engine->gfxMgr->getSceneMgr()->setSkyBox(true, "SolarSkyBox");
 
 	engine->gfxMgr->getSceneMgr()->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-	engine->gfxMgr->getSceneMgr()->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 }
 
 void SimMgr::CreateEntities() {
@@ -92,13 +95,15 @@ void SimMgr::SetPos(int numMoons, float dt) {
 	for (int i = 0; i < numMoons; i++) {
 		Entity* thisPlanet = engine->entityMgr->GetEntityByIndex(stackIndex);
 		posStack.push(posStack.top());	//push copy of previous matrix
-		thisPlanet->IncrementAngle(dt * engine->GetSpeed());
+
+		thisPlanet->IncrementAngle(dt);
 
 		posStack.top() += Ogre::Vector3(	sin(thisPlanet->GetAngle()) * thisPlanet->GetPlanet()->orbitDist,
 											0.0f,
 											cos(thisPlanet->GetAngle()) * thisPlanet->GetPlanet()->orbitDist);
 
 		thisPlanet->SetPosition(posStack.top());
+
 		stackIndex++;
 
 		if (thisPlanet->GetPlanet()->numMoons > 0) {

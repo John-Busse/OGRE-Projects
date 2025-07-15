@@ -30,4 +30,6 @@ class SimMgr : public Mgr {
 	private:
 		int stackIndex;
 		std::stack<Ogre::Vector3> posStack;
+
+		Ogre::Real maxDistance;
 };
