@@ -11,12 +11,11 @@ CamMgr::CamMgr(Engine *engine)
 	: Mgr(engine),
 	cameraNode(nullptr),
 	radius(5.0f),
-	theta(270.0f),
-	phi(90.0f),
 	camPos(Ogre::Vector3(0.0f, 0.0f, -50.0f)),
 	focusPos(Ogre::Vector3(0.0f, 0.0f, 0.0f)) {
 	this->engine = engine;
 	updateCam = true;
+	ResetAngle();
 }
 
 CamMgr::~CamMgr() {
@@ -49,25 +48,25 @@ void CamMgr::Tick(float dt) {
 		SetRadius(selected->GetPlanet()->scale);
 		ResetAngle();
 		updateCam = false;
-		std::cout << "orientation: " << cameraNode->getOrientation() << "\n";
-		cameraNode->resetOrientation();
-		std::cout << "orientation after: " << cameraNode->getOrientation() << "\n";
 	}
 
 	cameraNode->setPosition(camPos);
-	cameraNode->lookAt(focusPos,Ogre::Node::TS_WORLD);
-	//cameraNode->resetOrientation();
+	//OGRE doesn't allow direct model matrix manipulation
+	//
+	cameraNode->resetOrientation();
+	cameraNode->lookAt(Ogre::Vector3(focusPos.x, camPos.y, focusPos.z), Ogre::Node::TS_WORLD);
+	cameraNode->lookAt(focusPos, Ogre::Node::TS_WORLD);
 }
 
 void CamMgr::ResetAngle() {
 	//if we're at the origin (looking at the sun)
 	if (focusPos == Ogre::Vector3::ZERO) {
-		theta = 270.0f;
+		theta = 180.0f;
 		phi = 90.0f;
 	} else {	//otherwise, face the sunlit side of the planet
 		Ogre::Vector3 view = Ogre::Vector3(-focusPos.normalisedCopy());
 		theta = atan2(view.z, view.x) * (180.0f / M_PI);
-		phi = acos(view.y / 1.0f) * (180.0f / M_PI);
+		phi = acos(view.y / 1.0f) * (180.0f / M_PI) - 30.0f;
 	}
 }
 

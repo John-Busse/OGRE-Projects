@@ -33,6 +33,8 @@ class CamMgr : public Mgr {
 		//zoom is multipled by the planet scale for more consistent movement
 		void MoveZ(bool in, float scale, float delta);
 
+		Ogre::SceneNode* getCameraNode() const {return cameraNode;}
+
 		bool GetUpdateCam() const { return updateCam; }
 		void SetUpdateCam(bool val) { updateCam = val; }
 	private:

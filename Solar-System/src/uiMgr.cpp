@@ -52,7 +52,7 @@ void UIMgr::Load() {
 
 	//entity info text box
 	std::string entityTBContent = "Selected Entity: None\n";
-	entityInfoTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_BOTTOMRIGHT, "EntityInfo", "Entity Info", 300, 160);
+	entityInfoTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_BOTTOMRIGHT, "EntityInfo", "Entity Info", 450, 200);
 	entityInfoTB->setText(entityTBContent);
 }
 
