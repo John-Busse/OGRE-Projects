@@ -25,7 +25,7 @@ class Entity {
 
 		void SetPosition(Ogre::Vector3 newPos) { position = newPos; }
 		void SetSelected(bool select) {	isSelected = select; }
-		void IncrementAngle(float value) { orbitAngle += value * info->orbitSpeed; }
+		void IncrementAngle(float value) {	orbitAngle += value * info->orbitSpeed; }
 
 	private:
 		//ogre object info
@@ -34,7 +34,7 @@ class Entity {
 		//dynamic info
 		Ogre::Vector3 position = Ogre::Vector3::ZERO;
 		bool isSelected = false;
-		float heading = 0.0f, orbitAngle = 0.0f;
+		float orbitAngle = 0.0f;
 		//planet info
 		PlanetInfo* info;
 };
