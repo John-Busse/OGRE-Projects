@@ -47,7 +47,7 @@ void UIMgr::Load() {
 	engineControlsTB->setText(engineControls);
 
 	// entity controls text box
-	entityControlsTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_BOTTOMLEFT, "EntityControls", "Entity Controls", 350, 175);
+	entityControlsTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_BOTTOMLEFT, "EntityControls", "Entity Controls", 350, 200);
 	entityControlsTB->setText(entityControls);
 
 	//entity info text box
