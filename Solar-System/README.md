@@ -34,7 +34,7 @@
 - ~~Entity info panel showing current selected planet with entity class information~~ COMPLETE 7/9/25
 #### Camera/Window
 - ~~Camera Manager class~~  COMPLETE 7/8/25
-- Reset camera rotation when new planet selected
+- ~~Reset camera rotation when new planet selected~~ COMPLETE 7/15/2025
 
 ## The project is buildable, but not fully functional
 ### Dependencies
