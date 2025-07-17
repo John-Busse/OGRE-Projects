@@ -98,9 +98,9 @@ void SimMgr::SetPos(int numMoons, float dt) {
 
 		thisPlanet->IncrementAngle(dt);
 
-		posStack.top() += Ogre::Vector3(	sin(thisPlanet->GetAngle()) * thisPlanet->GetPlanet()->orbitDist,
+		posStack.top() += Ogre::Vector3(	sin(thisPlanet->GetAngle().valueRadians()) * thisPlanet->GetPlanet()->orbitDist,
 											0.0f,
-											cos(thisPlanet->GetAngle()) * thisPlanet->GetPlanet()->orbitDist);
+											cos(thisPlanet->GetAngle().valueRadians()) * thisPlanet->GetPlanet()->orbitDist);
 
 		thisPlanet->SetPosition(posStack.top());
 
