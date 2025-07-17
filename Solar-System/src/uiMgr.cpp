@@ -52,7 +52,7 @@ void UIMgr::Load() {
 
 	//entity info text box
 	std::string entityTBContent = "Selected Entity: None\n";
-	entityInfoTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_BOTTOMRIGHT, "EntityInfo", "Entity Info", 450, 200);
+	entityInfoTB = trayMgr->createTextBox(OgreBites::TrayLocation::TL_BOTTOMRIGHT, "EntityInfo", "Entity Info", 350, 200);
 	entityInfoTB->setText(entityTBContent);
 }
 
@@ -61,10 +61,11 @@ void UIMgr::Tick(float dt) {
 	Entity* selected = engine->entityMgr->GetSelected();
 	if (selected) {
 		std::string entityInfo = "Selected Entity: " + selected->GetPlanet()->name + "\n"
-			+ "Simulation speed: " + std::to_string(int(engine->GetSpeed() * 10.0f)) + "\n"
-			+ "Planet position: " + Ogre::StringConverter::toString(selected->GetPosition()) + "\n"
-			+ "Camera position: " + Ogre::StringConverter::toString(engine->camMgr->GetPos()) + "\n"
-			+ "Camera focus position: " + Ogre::StringConverter::toString(engine->camMgr->GetFocus()) + "\n";
+			+ "Simulation speed: " + std::to_string(int(engine->GetSpeed() * 10.0f)) + "\n";
+			//if the selected planet isn't the sun
+			if (selected->GetPlanet()->index) {
+				entityInfo += "Orbit Angle: " + std::to_string(int(selected->GetAngle().valueDegrees())) + "\n";
+			}
 		entityInfoTB->setText(entityInfo);
 	} else {
 		entityInfoTB->setText("Selected Entity: None");
