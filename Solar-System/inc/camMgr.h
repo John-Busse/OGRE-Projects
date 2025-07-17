@@ -45,5 +45,6 @@ class CamMgr : public Mgr {
 
 		float radius;
 		Ogre::Degree theta, phi;
+		//we update the camera when switching planets
 		bool updateCam;
 };

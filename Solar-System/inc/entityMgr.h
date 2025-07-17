@@ -23,7 +23,7 @@ class EntityMgr : public Mgr {
 		void CreateEntity(Ogre::Vector3, PlanetInfo*);
 
 		Entity* GetSelected() const { return selectedEntity; }
-		Entity* GetEntityByIndex(int) const;
+		Entity* GetEntityByIndex(int index) const;
 		
 		bool SetSelected(int index);
 	private:

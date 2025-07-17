@@ -40,6 +40,7 @@ class Engine {
 
         bool IsRunning() const { return running; }
         void SetSpeed(bool up);
+        // The current simulation speed
         float GetSpeed() const { return simSpeed * 0.1; }
         void Stop() { running = false; }    //Sets running to false
     

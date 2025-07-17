@@ -41,8 +41,8 @@ void CamMgr::Load() {
 }
 
 void CamMgr::Tick(float dt) {
-
 	Entity* selected = engine->entityMgr->GetSelected();
+	//update camera position
 	SetPos(selected->GetPosition());
 	if (updateCam) {
 		SetRadius(selected->GetPlanet()->scale);
@@ -50,6 +50,7 @@ void CamMgr::Tick(float dt) {
 		updateCam = false;
 	}
 
+	//set camera position
 	cameraNode->setPosition(camPos);
 	//OGRE doesn't allow direct model matrix manipulation
 	//

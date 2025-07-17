@@ -40,10 +40,11 @@
 struct PlanetInfo {
 	std::string name, sceneName;
 	int numMoons;
+	//planet size
 	float scale;
 	//orbit info
 	float orbitDist, orbitSpeed, orbitTilt;
-	//rotation info
+	//the speed this planet rotates
 	float rotateSpeed;
 	int index;
 };
