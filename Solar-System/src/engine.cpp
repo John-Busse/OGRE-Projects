@@ -4,12 +4,6 @@
  * Engine class definition
 */
 #include "engine.h"
-#include "camMgr.h"
-#include "entityMgr.h"
-#include "simMgr.h"
-#include "gfxMgr.h"
-#include "inputMgr.h"
-#include "uiMgr.h"
 
 Engine::Engine()
     : running(true),

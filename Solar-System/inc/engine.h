@@ -14,14 +14,6 @@
 #include "inputMgr.h"
 #include "uiMgr.h"
 
-// forward declarations
-class CamMgr;
-class EntityMgr;
-class SimMgr;
-class GfxMgr;
-class InputMgr;
-class UIMgr;
-
 class Engine {
     public:
         Engine();

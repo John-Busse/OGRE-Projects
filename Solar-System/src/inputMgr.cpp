@@ -8,7 +8,6 @@
 #include "engine.h"
 #include "gfxMgr.h"
 #include "entity.h"
-//#include "entityMgr.h"
 
 InputMgr::InputMgr(Engine *engine)
 	: Mgr(engine) {
@@ -19,7 +18,7 @@ InputMgr::~InputMgr() {
 }
 
 void InputMgr::Load() {
-engine->gfxMgr->addInputListener(this);
+	engine->gfxMgr->addInputListener(this);
 }
 
 void InputMgr::Tick(float dt) {

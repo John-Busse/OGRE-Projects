@@ -53,7 +53,6 @@ void GfxMgr::setup() {
 	//register the scene with RTSS
 	Ogre::RTShader::ShaderGenerator* shaderGen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
 	shaderGen->addSceneManager(sceneMgr);
-
 }
 
 void GfxMgr::Load() {

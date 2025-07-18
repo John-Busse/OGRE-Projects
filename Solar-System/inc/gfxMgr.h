@@ -17,7 +17,7 @@ class GfxMgr : public Mgr, public OgreBites::ApplicationContext {
 		void Load() override;
 		void Tick(float dt) override;
 
-		bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+		bool frameRenderingQueued(const Ogre::FrameEvent& evt) override;
 
 		Ogre::SceneManager* getSceneMgr() { return sceneMgr; }
 
