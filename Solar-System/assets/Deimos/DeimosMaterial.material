@@ -3,8 +3,9 @@ material MoonMaterial {
     receive_shadows on
     technique {
         pass {
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
+            ambient 0 0 0 0
+            diffuse 0.62 0.56 0.52 1.0
+            specular 0.0 0.0 0 0 0
 
             // additional maps - requires RTSS
             rtshader_system {

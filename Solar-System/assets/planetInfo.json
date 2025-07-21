@@ -9,8 +9,7 @@
     "rotateSpeed": 1.028,
     "rotateAngle": 0,
     "sceneName": "Sun.scene",
-    "index": 0,
-    "oldSceneName": "assets/Sun/Sun.scene"
+    "index": 0
   },
   {
     "name": "Mercury",
@@ -22,8 +21,7 @@
     "rotateSpeed": 0.03,
     "rotateAngle": 0.034,
     "sceneName": "Mercury.scene",
-    "index": 1,
-    "oldSceneName": "assets/Mercury/Mercury.scene"
+    "index": 1
   },
   {
     "name": "Venus",
@@ -35,8 +33,7 @@
     "rotateSpeed": -0.01,
     "rotateAngle": 2.64,
     "sceneName": "Venus.scene",
-    "index": 2,
-    "oldSceneName": "assets/Venus/Venus.scene"
+    "index": 2
   },
   {
     "name": "Earth",
@@ -48,60 +45,55 @@
     "rotateSpeed": 4.651,
     "rotateAngle": 23.44,
     "sceneName": "Earth.scene",
-    "index": 3,
-    "oldSceneName": "assets/Earth/Earth.scene"
+    "index": 3
   },
   {
     "name": "Luna",
     "numMoons": 0,
     "scale": 0.27,
     "orbitDist": 3,
-    "orbitSpeed": 0.034,
+    "orbitSpeed": 12,
     "orbitTilt": 5.145,
     "rotateSpeed": 74.46,
     "rotateAngle": 24,
     "sceneName": "Moon.scene",
-    "index": -1,
-    "oldSceneName": "assets/Moon/Moon.scene"
+    "index": -1
   },
   {
     "name": "Mars",
     "numMoons": 2,
     "scale": 0.531,
     "orbitDist": 141.63,
-    "orbitSpeed": 0.808,
+    "orbitSpeed": 2,
     "orbitTilt": 5.65,
     "rotateSpeed": 2.41,
     "rotateAngle": 25.19,
     "sceneName": "Mars.scene",
-    "index": 4,
-    "oldSceneName": "assets/Mars/Mars.scene"
+    "index": 4
   },
   {
     "name": "Phobos",
     "numMoons": 0,
-    "scale": 0.25,
+    "scale": 0.1,
     "orbitDist": 1,
-    "orbitSpeed": 0.072,
+    "orbitSpeed": 4,
     "orbitTilt": 1.093,
     "rotateSpeed": 0.03,
     "rotateAngle": 0,
-    "sceneName": "SmallMoon.scene",
-    "index": -1,
-    "oldSceneName": "assets/SmallMoons/SmallMoon.scene"
+    "sceneName": "Phobos.scene",
+    "index": -1
   },
   {
     "name": "Deimos",
     "numMoons": 0,
-    "scale": 0.125,
+    "scale": 0.05,
     "orbitDist": 2,
-    "orbitSpeed": 0.045,
+    "orbitSpeed": 0.45,
     "orbitTilt": 0.93,
     "rotateSpeed": 0.808,
     "rotateAngle": 0,
-    "sceneName": "SmallMoon.scene",
-    "index": -1,
-    "oldSceneName": "assets/SmallMoons/SmallMoon.scene"
+    "sceneName": "Deimos.scene",
+    "index": -1
   },
   {
     "name": "Jupiter",
@@ -113,8 +105,7 @@
     "rotateSpeed": 126,
     "rotateAngle": 3.13,
     "sceneName": "Jupiter.scene",
-    "index": 5,
-    "oldSceneName": "assets/Jupiter/Jupiter.scene"
+    "index": 5
   },
   {
     "name": "Io",
@@ -125,9 +116,8 @@
     "orbitTilt": 0.05,
     "rotateSpeed": 0.75,
     "rotateAngle": 0,
-    "sceneName": "SmallMoon.scene",
-    "index": -1,
-    "oldSceneName": "assets/SmallMoons/SmallMoon.scene"
+    "sceneName": "Io.scene",
+    "index": -1
   },
   {
     "name": "Europa",
@@ -138,9 +128,8 @@
     "orbitTilt": 0.47,
     "rotateSpeed": 0.4385,
     "rotateAngle": 0.1,
-    "sceneName": "SmallMoon.scene",
-    "index": -1,
-    "oldSceneName": "assets/SmallMoons/SmallMoon.scene"
+    "sceneName": "Europa.scene",
+    "index": -1
   },
   {
     "name": "Ganymede",
@@ -151,9 +140,8 @@
     "orbitTilt": 0.2,
     "rotateSpeed": 0.4385,
     "rotateAngle": 0.33,
-    "sceneName": "SmallMoon.scene",
-    "index": -1,
-    "oldSceneName": "assets/SmallMoons/SmallMoon.scene"
+    "sceneName": "Ganymede.scene",
+    "index": -1
   },
   {
     "name": "Callisto",
@@ -164,13 +152,12 @@
     "orbitTilt": 2.017,
     "rotateSpeed": 0.4385,
     "rotateAngle": 1,
-    "sceneName": "SmallMoon.scene",
-    "index": -1,
-    "oldSceneName": "assets/SmallMoons/SmallMoon.scene"
+    "sceneName": "Callisto.scene",
+    "index": -1
   },
   {
     "name": "Saturn",
-    "numMoons": 1,
+    "numMoons": 0,
     "scale": 8.552,
     "orbitDist": 890.75,
     "orbitSpeed": 0.325,
@@ -178,8 +165,7 @@
     "rotateSpeed": 98.7,
     "rotateAngle": 26.73,
     "sceneName": "Saturn.scene",
-    "index": 6,
-    "oldSceneName": "assets/Saturn/Saturn.scene"
+    "index": 6
   },
   {
     "name": "Uranus",
@@ -191,8 +177,7 @@
     "rotateSpeed": 25.9,
     "rotateAngle": 82.23,
     "sceneName": "Uranus.scene",
-    "index": 7,
-    "oldSceneName": "assets/Uranus/Uranus.scene"
+    "index": 7
   },
   {
     "name": "Neptune",
@@ -204,8 +189,7 @@
     "rotateSpeed": 26.8,
     "rotateAngle": 28.32,
     "sceneName": "Neptune.scene",
-    "index": 8,
-    "oldSceneName": "assets/Neptune/Neptune.scene"
+    "index": 8
   },
   {
     "name": "Pluto",
@@ -217,7 +201,6 @@
     "rotateSpeed": 0.131,
     "rotateAngle": 119.51,
     "sceneName": "Pluto.scene",
-    "index": 9,
-    "oldSceneName": "assets/Pluto/Pluto.scene"
+    "index": 9
   }
 ]

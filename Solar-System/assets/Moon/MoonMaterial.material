@@ -9,8 +9,7 @@ material PlanetMaterial {
 
             // additional maps - requires RTSS
             rtshader_system {
-                lighting_stage per-pixel normalised
-                shadow_mapping [light_count 1]
+                lighting_stage metal_roughness
             }
 
 
