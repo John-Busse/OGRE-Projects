@@ -43,9 +43,10 @@ struct PlanetInfo {
 	//planet size
 	float scale;
 	//orbit info
-	float orbitDist, orbitSpeed, orbitTilt;
-	//the speed this planet rotates
+	float orbitDist, orbitSpeed;
+	//rotation info
 	float rotateSpeed;
+	Ogre::Degree orbitTilt, rotateAngle;
 	int index;
 };
 

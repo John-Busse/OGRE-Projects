@@ -21,11 +21,11 @@ Entity::Entity(Engine* engine, int id, PlanetInfo* pInfo, Ogre::Vector3 pos) :
 	Ogre::ResourceGroupManager::getSingleton().setWorldResourceGroupName(info->name);
 	sceneNode->loadChildren(info->sceneName);
 	sceneNode->setScale(Ogre::Vector3(info->scale));
-	sceneNode->roll(Ogre::Degree(info->orbitTilt), Ogre::Node::TS_LOCAL);
+	sceneNode->roll(info->rotateAngle, Ogre::Node::TS_LOCAL);
 	//sceneNode->setOrientation(Ogre::Quaternion())
 
 	// Sun shouldn't cast shadows
-	if (!id) {
+	if (id == 0) {
 		Ogre::SceneNode* childNode = static_cast<Ogre::SceneNode*>(sceneNode->getChild(0));
 		childNode->getAttachedObject(0)->setCastShadows(false);
 	}

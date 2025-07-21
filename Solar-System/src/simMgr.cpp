@@ -61,6 +61,7 @@ void SimMgr::CreateEntities() {
 		pInfo->orbitSpeed = data[i]["orbitSpeed"];
 		pInfo->orbitTilt = data[i]["orbitTilt"];
 		pInfo->rotateSpeed = data[i]["rotateSpeed"];
+		pInfo->rotateAngle = data[i]["rotateAngle"];
 		pInfo->sceneName = data[i]["sceneName"];
 		pInfo->index = data[i]["index"];
 
@@ -99,7 +100,7 @@ void SimMgr::SetPos(int numMoons, float dt) {
 		thisPlanet->IncrementAngle(dt);
 
 		posStack.top() += Ogre::Vector3(	sin(thisPlanet->GetAngle().valueRadians()) * thisPlanet->GetPlanet()->orbitDist,
-											0.0f,
+											0.0,
 											cos(thisPlanet->GetAngle().valueRadians()) * thisPlanet->GetPlanet()->orbitDist);
 
 		thisPlanet->SetPosition(posStack.top());
