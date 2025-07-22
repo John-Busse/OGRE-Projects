@@ -9,7 +9,7 @@ material PlanetMaterial {
 
             // additional maps - requires RTSS
             rtshader_system {
-                lighting_stage per-pixel normalised
+                lighting_stage ffp normalised
             }
 
             // - base_color_texture

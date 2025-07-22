@@ -5,18 +5,17 @@ material MoonMaterial {
         pass {
             ambient 0 0 0 0
             diffuse 0.96 0.87 0.37 1.0
-            specular 0.0 0.0 0 0 0
+            specular 0.96 0.87 0.37 1.0
 
             // additional maps - requires RTSS
             rtshader_system {
-                lighting_stage metal_roughness
+                lighting_stage ffp normalised
             }
 
             // - base_color_texture
             texture_unit {
                 texture SmallMoon.png
                 tex_address_mode wrap
-                colour_op modulate
             }
         }
     }
